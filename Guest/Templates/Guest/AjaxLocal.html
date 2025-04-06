@@ -1,0 +1,5 @@
+<select name="local" id="local"><option value="">--Select--</option>
+    {% for i in local %}
+    <option value="{{i.id}}">{{i.local_place}}</option>
+    {% endfor %}
+    </select>

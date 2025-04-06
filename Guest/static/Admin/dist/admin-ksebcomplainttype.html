@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSEB Complaint Types - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - abbreviated for brevity -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <!-- Sidebar menu items -->
+                <div class="menu-category">
+                    <div class="menu-category-title">Complaint Types</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-ksebcomplainttype.html" class="active">
+                                <i class="fas fa-bolt"></i>
+                                <span>KSEB Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-mvdcomplainttype.html">
+                                <i class="fas fa-car"></i>
+                                <span>MVD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-pwdcomplainttype.html">
+                                <i class="fas fa-road"></i>
+                                <span>PWD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-muncipalitycomplainttype.html">
+                                <i class="fas fa-city"></i>
+                                <span>Municipality Complaints</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Other menu categories -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header - abbreviated for brevity -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <!-- Header content -->
+                </div>
+            </header>
+
+            <!-- KSEB Complaint Types Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">KSEB Complaint Types</h1>
+                
+                <!-- Complaint Type Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>18</h3>
+                            <p>Total Complaint Types</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,245</h3>
+                            <p>Resolved Complaints</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>328</h3>
+                            <p>Pending Complaints</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87</h3>
+                            <p>High Priority Issues</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Complaint Type Form -->
+                <div class="form-container">
+                    <div class="form-title">Add New Complaint Type</div>
+                    <form id="complaint-type-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="complaint-type-name">Complaint Type Name</label>
+                                <input type="text" id="complaint-type-name" class="form-control" placeholder="Enter complaint type name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="complaint-code">Complaint Code</label>
+                                <input type="text" id="complaint-code" class="form-control" placeholder="Enter complaint code" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="priority-level">Priority Level</label>
+                                <select id="priority-level" class="form-control" required>
+                                    <option value="">Select Priority</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="estimated-resolution-time">Estimated Resolution Time (hours)</label>
+                                <input type="number" id="estimated-resolution-time" class="form-control" placeholder="Enter estimated time">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="complaint-description">Description</label>
+                            <textarea id="complaint-description" class="form-control" rows="3" placeholder="Enter complaint type description"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add Complaint Type</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Complaint Types Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>KSEB Complaint Types List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Complaint Type</th>
+                                    <th>Code</th>
+                                    <th>Priority</th>
+                                    <th>Resolution Time</th>
+                                    <th>Active Complaints</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Power Outage</td>
+                                    <td>KSEB-PO</td>
+                                    <td><span class="badge badge-high">High</span></td>
+                                    <td>4 hours</td>
+                                    <td>42</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Complaint Type"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Complaint Type"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Complaint Type"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Voltage Fluctuation</td>
+                                    <td>KSEB-VF</td>
+                                    <td><span class="badge badge-medium">Medium</span></td>
+                                    <td>8 hours</td>
+                                    <td>28</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Complaint Type"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Complaint Type"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Complaint Type"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Transformer Issue</td>
+                                    <td>KSEB-TI</td>
+                                    <td><span class="badge badge-high">High</span></td>
+                                    <td>12 hours</td>
+                                    <td>15</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Complaint Type"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Complaint Type"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Complaint Type"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Billing Error</td>
+                                    <td>KSEB-BE</td>
+                                    <td><span class="badge badge-low">Low</span></td>
+                                    <td>48 hours</td>
+                                    <td>56</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Complaint Type"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Complaint Type"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Complaint Type"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Damaged Power Line</td>
+                                    <td>KSEB-DPL</td>
+                                    <td><span class="badge badge-critical">Critical</span></td>
+                                    <td>2 hours</td>
+                                    <td>12</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Complaint Type"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Complaint Type"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Complaint Type"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Form submission
+        document.getElementById('complaint-type-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the complaint type data
+            alert('Complaint Type added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

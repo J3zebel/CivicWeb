@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Management - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - abbreviated for brevity -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <!-- Sidebar menu items -->
+                <div class="menu-category">
+                    <div class="menu-category-title">Location Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-district.html">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Districts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-place.html" class="active">
+                                <i class="fas fa-map"></i>
+                                <span>Places</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-localplace.html">
+                                <i class="fas fa-street-view"></i>
+                                <span>Local Places</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Other menu categories -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header - abbreviated for brevity -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <!-- Header content -->
+                </div>
+            </header>
+
+            <!-- Place Management Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Place Management</h1>
+                
+                <!-- Place Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>278</h3>
+                            <p>Total Places</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>93</h3>
+                            <p>Urban Places</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>185</h3>
+                            <p>Rural Places</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>42</h3>
+                            <p>Places with Issues</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Place Form -->
+                <div class="form-container">
+                    <div class="form-title">Add New Place</div>
+                    <form id="place-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="place-name">Place Name</label>
+                                <input type="text" id="place-name" class="form-control" placeholder="Enter place name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <select id="district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                    <option value="1">Thiruvananthapuram</option>
+                                    <option value="2">Kollam</option>
+                                    <option value="3">Pathanamthitta</option>
+                                    <option value="4">Alappuzha</option>
+                                    <option value="5">Kottayam</option>
+                                    <option value="6">Idukki</option>
+                                    <option value="7">Ernakulam</option>
+                                    <option value="8">Thrissur</option>
+                                    <option value="9">Palakkad</option>
+                                    <option value="10">Malappuram</option>
+                                    <option value="11">Kozhikode</option>
+                                    <option value="12">Wayanad</option>
+                                    <option value="13">Kannur</option>
+                                    <option value="14">Kasaragod</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="place-type">Place Type</label>
+                                <select id="place-type" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="urban">Urban</option>
+                                    <option value="rural">Rural</option>
+                                    <option value="suburban">Suburban</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="place-population">Population</label>
+                                <input type="number" id="place-population" class="form-control" placeholder="Enter population">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="place-pincode">Pincode</label>
+                                <input type="text" id="place-pincode" class="form-control" placeholder="Enter pincode">
+                            </div>
+                            <div class="form-group">
+                                <label for="place-area">Area (sq. km)</label>
+                                <input type="number" id="place-area" class="form-control" placeholder="Enter area">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="place-description">Description</label>
+                            <textarea id="place-description" class="form-control" rows="3" placeholder="Enter place description"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add Place</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Places Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>Places List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Place Name</th>
+                                    <th>District</th>
+                                    <th>Type</th>
+                                    <th>Population</th>
+                                    <th>Pincode</th>
+                                    <th>Local Places</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Kazhakkoottam</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Urban</td>
+                                    <td>45,782</td>
+                                    <td>695582</td>
+                                    <td>12</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Place"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Place"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Place"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Varkala</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Urban</td>
+                                    <td>42,273</td>
+                                    <td>695141</td>
+                                    <td>9</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Place"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Place"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Place"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Neyyattinkara</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Urban</td>
+                                    <td>70,850</td>
+                                    <td>695121</td>
+                                    <td>15</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Place"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Place"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Place"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Nedumangad</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Urban</td>
+                                    <td>60,161</td>
+                                    <td>695541</td>
+                                    <td>11</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Place"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Place"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Place"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Attingal</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Urban</td>
+                                    <td>38,832</td>
+                                    <td>695101</td>
+                                    <td>8</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Place"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Place"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Place"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Form submission
+        document.getElementById('place-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the place data
+            alert('Place added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

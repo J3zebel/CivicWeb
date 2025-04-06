@@ -1,0 +1,69 @@
+{% extends 'PWD/Head.html' %}
+{% load static %}
+
+{% block title %}PWD - Profile{% endblock %}
+
+{% block content %}
+<div class="profile-section">
+    <div class="user-info">
+        <img src="{{ pwd.pwd_proof }}" alt="PWD Profile" class="profile-avatar">
+        <h2>{{ pwd.pwd_name }}</h2>
+    </div>
+    <div class="contact-information">
+        <h3>Contact Information</h3>
+        <p><strong>Email:</strong> {{ pwd.pwd_email }}</p>
+        <p><strong>Phone:</strong> {{ pwd.pwd_contact }}</p>
+        <p><strong>Address:</strong> {{ pwd.pwd_address }}</p>
+        <p><strong>District:</strong> {{ pwd.district.district_name }}</p>
+    </div>
+    <div class="links">
+        <a href="{% url 'PWD:editprofile' %}">Edit Profile</a>
+        <a href="{% url 'PWD:changepassword' %}">Change Password</a>
+    </div>
+</div>
+
+<style>
+    .profile-section {
+        width: 100%;
+        background: #e6f0fa; /* Light blue background */
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 2rem 0;
+    }
+    .user-info {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .profile-avatar {
+        width: 300px; /* Rectangular shape */
+        height: 200px;
+        margin-bottom: 1rem;
+        object-fit: fill; /* Fits image within rectangle */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .user-info h2 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    .contact-information h3 {
+        margin-bottom: 1rem;
+        color: #003087;
+    }
+    .contact-information p {
+        margin: 0.5rem 0;
+    }
+    .links a {
+        display: inline-block;
+        background: #add8e6; /* Light blue button */
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+</style>
+{% endblock %}

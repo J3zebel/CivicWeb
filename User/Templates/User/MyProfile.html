@@ -1,0 +1,127 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: #333;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: rgb(223, 199, 94);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 750px;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-image {
+            flex: 0 0 300px;
+            /* Adjusts the image container width */
+            height: 100%;
+            /* Ensures it spans the full card height */
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            overflow: hidden;
+            /* Ensures the image doesn't overflow the container */
+        }
+
+        .profile-image img {
+            width: 100%;
+            /* Dynamically adjusts width */
+            height: 100%;
+            /* Dynamically adjusts height */
+            object-fit: cover;
+            /* Maintains aspect ratio while filling the container */
+            border-radius: 12px;
+            /* Ensures rounded edges are consistent with the card */
+        }
+
+        .profile-details {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .profile-details h1 {
+            margin: 0 0 10px;
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .profile-details .actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .profile-details .actions a {
+            text-decoration: none;
+            color: white;
+            background: #2575fc;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .profile-details .actions a:hover {
+            background: #1a5cbf;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card" >
+        <div class="profile-image">
+            <img src="{{user.user_photo}}" alt="User Photo">
+        </div>
+        <div class="profile-details">
+            <h1>{{user.user_name}}</h1>
+            <p><strong>E-mail:</strong> {{user.user_email}}</p>
+            <p><strong>Contact:</strong> {{user.user_contact}}</p>
+            <p><strong>Address:</strong> {{user.user_address}}</p>
+            <p><strong>District:</strong> {{user.localplace.place.district.district_name}}</p>
+            <p><strong>Place:</strong> {{user.localplace.place.place_name}}</p>
+            <div class="actions">
+                <a href="{% url 'User:editprofile' %}">Edit Profile</a>
+                <a href="{% url 'User:changepassword' %}">Change Password</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

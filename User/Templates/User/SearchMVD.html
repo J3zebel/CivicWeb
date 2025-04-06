@@ -1,0 +1,61 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>District</td>
+                <td><select name="sel_district" id="sel_district" onchange="searchMVD()"> <option value="">--Select--</option>
+                    {% for i in district %}
+                    <option value="{{i.id}}">{{i.district_name}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            
+        </table>
+        <table border="1" id="result">
+            <tr>
+                <td>Name</td>
+                <td>Contact</td>
+                <td>Email</td>
+                <td>Address</td>
+                <td>Action</td>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.mvd_name}}</td>
+                <td> {{i.mvd_contact}}</td>
+                <td>{{i.mvd_email}}</td>
+                <td>{{i.mvd_address}}</td>
+                <td ><a href="{% url 'User:mvdcomplaint' i.mvd_id %}">Complaint</a></td>
+                <td ><a href="{% url 'User:mvdrequest' i.mvd_id %}">Request</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function searchMVD() {
+        var district = document.getElementById("sel_district").value
+        
+        $.ajax({
+            url: "{% url 'User:ajaxsearchmvd' %}",
+            data: { district: district, }, 
+            success: function (data) {
+                $("#result").html(data);
+               
+            },
+        });
+    }
+</script>
+{% endblock %}

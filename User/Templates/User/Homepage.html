@@ -1,0 +1,389 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords"
+    content="​We&amp;apos;re The Best
+In Solar Energy, ​​Power Your Home With Solar, ​We specialize in a wide variety of solar installation, ​Installing Benefits, ​Solar Benefits, Our Projects, Contact Us">
+  <meta name="description" content="">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="{% static 'Main/nicepage.css' %}" media="screen">
+  <link rel="stylesheet" href="{% static 'Main/Homepage.css' %}" media="screen">
+  <script class="u-script" type="text/javascript" src="{% static 'Main/jquery.js' %}" defer=""></script>
+  <script class="u-script" type="text/javascript" src="{% static 'Main/nicepage.js' %}" defer=""></script>
+  <meta name="generator" content="Nicepage 7.3.1, nicepage.com">
+
+
+
+
+
+
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/civic.png"
+}</script>
+  <meta name="theme-color" content="#c4b35d">
+  <meta property="og:title" content="Homepage">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body data-path-to-root="./" data-include-products="false"
+  class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-7acc">
+    <h4 class="u-text u-text-default u-text-1">CIVIC </h4><a href="#" class="u-image u-logo u-image-1"
+      data-image-width="210" data-image-height="159">
+      <img src="{% static 'Main/images/civic.png' %}" class="u-logo-image u-logo-image-1">
+    </a>
+    <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" data-animation-name="fadeIn"
+      data-animation-duration="1000" data-animation-delay="0">
+      <div class="menu-collapse"
+        style="font-size: 1rem; letter-spacing: 0px; text-transform: uppercase; font-weight: 500;">
+        <a class="u-button-style u-custom-active-border-color u-custom-active-color u-custom-border u-custom-border-color u-custom-borders u-custom-hover-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+          href="#">
+          <svg class="u-svg-link" viewBox="0 0 24 24">
+            <use xlink:href="#menu-hamburger"></use>
+          </svg>
+          <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <rect y="1" width="16" height="2"></rect>
+              <rect y="7" width="16" height="2"></rect>
+              <rect y="13" width="16" height="2"></rect>
+            </g>
+          </svg>
+        </a>
+      </div>
+      <div class="u-custom-menu u-nav-container">
+        <ul class="u-nav u-spacing-2 u-unstyled u-nav-1" data-animation-name="customAnimationIn"
+          data-animation-duration="1000">
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:homepage' %}" style="padding: 10px 20px;">Home</a>
+          </li>
+
+
+
+
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:myprofile' %}" style="padding: 10px 20px;">My Profile </a>
+          </li>
+
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:mycomplaints' %}" style="padding: 10px 20px;">My Complaints </a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:myrequests' %}" style="padding: 10px 20px;">My Requests </a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:feedback' %}" style="padding: 10px 20px;">Feedback </a>
+          </li>
+          <li class="u-nav-item"><a
+              class="u-active-custom-color-1 u-border-2 u-border-active-custom-color-1 u-border-hover-custom-color-1 u-border-no-left u-border-no-right u-border-no-top u-button-style u-hover-custom-color-1 u-nav-link u-text-active-white u-text-grey-90 u-text-hover-white"
+              href="{% url 'User:logout' %}" style="padding: 10px 20px;">Logout</a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="u-custom-menu u-nav-container-collapse">
+        <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+          <div class="u-inner-container-layout u-sidenav-overflow">
+            <div class="u-menu-close"></div>
+            <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+              <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Homepage.html">Home</a>
+              </li>
+
+              <li class="u-nav-item"><a class="u-button-style u-nav-link"
+                  href="{% url 'User:myprofile' %}">MyProfile</a>
+
+              <li class="u-nav-item"><a class="u-button-style u-nav-link">Search</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link">MyComplaints</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link">Public Complaints</a>
+              </li>
+              <li class="u-nav-item"><a class="u-button-style u-nav-link">Feedback</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <section
+    class="skrollable skrollable-between u-align-center u-clearfix u-container-align-center u-image u-parallax u-shading u-section-1"
+    src="" id="carousel_ed7a" data-image-width="2000" data-image-height="1143">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h1 class="u-align-center u-text u-text-1" data-animation-name="customAnimationIn" data-animation-duration="1500"
+        data-animation-delay="250"> We're The Best <br>In Social Servicing&nbsp;
+      </h1>
+      <div class="u-expanded-width u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          <div
+            class="u-align-center u-container-align-center u-container-style u-custom-color-1 u-list-item u-repeater-item u-shape-rectangle u-list-item-1"
+            data-animation-name="customAnimationIn" data-animation-duration="1250" data-animation-delay="500">
+            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+              <span class="u-align-center u-file-icon u-icon u-icon-1">
+                <a style="text-decoration-line: none;" href="{% url 'User:searchkseb' %}">
+                  <img src="{% static 'Main/images/869833-8d645c43.png' %}" alt=""></span>
+              <h4 class="u-align-center u-custom-font u-text u-text-font u-text-2"> Kerala State
+                Electricity Board</h4>
+              </a>
+            </div>
+          </div>
+          <div
+            class="u-align-center u-container-align-center u-container-style u-custom-color-1 u-list-item u-repeater-item u-shape-rectangle u-list-item-2"
+            data-animation-name="customAnimationIn" data-animation-duration="1250" data-animation-delay="500">
+            <a style="text-decoration-line: none;" href="{% url 'User:searchmunicipality' %}">
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                <span class="u-align-center u-file-icon u-icon u-icon-2">
+
+                  <img src="{% static 'Main/images/761534-030f4114.png' %}" alt=""></span>
+                <h4 class="u-align-center u-custom-font u-text u-text-font u-text-3">Muncipality</h4>
+            </a>
+          </div>
+        </div>
+        <div
+          class="u-align-center u-container-align-center u-container-style u-custom-color-1 u-list-item u-repeater-item u-shape-rectangle u-list-item-3"
+          data-animation-name="customAnimationIn" data-animation-duration="1250" data-animation-delay="500">
+          <a style="text-decoration-line: none;" href="{% url 'User:searchmvd' %}">
+            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+              <span class="u-align-center u-file-icon u-icon u-icon-3"><img
+                  src="{% static 'Main/images/6917269-34a9982c.png' %}" alt=""></span>
+              <h4 class="u-align-center u-custom-font u-text u-text-font u-text-4"> Motor Vehicle
+                Department</h4>
+          </a>
+        </div>
+      </div>
+      <div
+        class="u-align-center u-container-align-center u-container-style u-custom-color-1 u-list-item u-repeater-item u-shape-rectangle u-list-item-4"
+        data-animation-name="customAnimationIn" data-animation-duration="1250" data-animation-delay="500">
+        <a style="text-decoration-line: none;" href="{% url 'User:searchpwd' %}">
+
+          <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
+            <span class="u-align-center u-file-icon u-icon u-icon-4"><img
+                src="{% static 'Main/images/62512-ec288972.png' %}" alt=""></span>
+            <h4 class="u-align-center u-custom-font u-text u-text-font u-text-5">Public Works Department
+            </h4>
+        </a>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <section class="u-clearfix u-grey-10 u-section-2" id="sec-739b">
+    <div class="u-expanded-width u-shape u-shape-rectangle u-white u-shape-1"></div>
+    <div class="u-custom-color-1 u-shape u-shape-rectangle u-shape-2" data-animation-name="customAnimationIn"
+      data-animation-duration="1500" data-animation-delay="750"></div>
+    <img src="{% static 'Main/images/close-up-team-working-together_2.jpg' %}" alt=""
+      class="u-image u-image-default u-image-1" data-image-width="1380" data-image-height="920"
+      data-animation-name="customAnimationIn" data-animation-duration="1500">
+    <div class="u-align-left u-container-align-left u-container-style u-group u-white u-group-1"
+      data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="500">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h1 class="u-align-left u-text u-text-1"> We Are Happy To ​ Guide You</h1>
+        <p class="u-align-left u-text u-text-black u-text-2">Here you can view public complaints &nbsp;</p>
+        <a href="{% url 'User:publiccomplaint' %}"
+          class="u-active-custom-color-2 u-align-left u-border-active-black u-border-hover-black u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-50 u-text-active-white u-text-hover-white u-btn-1">Public
+          Complaints
+        </a>
+      </div>
+    </div>
+  </section>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .liked {
+      color: red !important;
+    }
+
+    .disliked {
+      color: white;
+    }
+  </style>
+  <section class="u-clearfix u-container-align-center u-grey-90 u-section-3" id="carousel_c8a7">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <h2 class="u-align-center u-text u-text-default u-text-1">Public Posts</h2>
+      <p class="u-align-center u-text u-text-default u-text-2">
+        Explore the latest updates and shared experiences from the community. 🚀
+      </p>
+      <div class="u-expanded-width u-list u-list-1">
+        <div class="u-repeater u-repeater-1">
+          {% for i in post %}
+          <div class="post-card" data-animation-name="customAnimationIn" data-animation-duration="1500">
+
+            <!-- Image Section -->
+            <div class="post-image-container">
+              <img src="{{ i.post_file }}" alt="Post Image">
+            </div>
+
+            <!-- Content Footer -->
+            <div class="post-footer">
+              <h3>{{ i.post_details }}</h3>
+              <p>Posted by:
+                {% if i.mvd %}{{ i.mvd.mvd_name }}
+                {% elif i.pwd %}{{ i.pwd.pwd_name }}
+                {% elif i.kseb %}{{ i.kseb.kseb_name }}
+                {% elif i.muncipality %}{{ i.muncipality.mun_name }}
+                {% endif %} on {{ i.post_date }}
+              </p>
+
+              <!-- Like Section -->
+              <div class="like-section">
+                <i {% if not i.condition %} class="fa-regular fa-heart" {% else %} class="fa-solid fa-heart text-danger"
+                  {% endif %} id="likebtn{{forloop.counter}}"
+                  onclick="getLike('{{i.id}}','likebtn{{forloop.counter}}','count{{forloop.counter}}')"></i>
+                <span id="count{{forloop.counter}}">{{i.count}}</span>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+    <style>
+      .u-repeater-1>.post-card {
+        flex-grow: 0;
+        /* Prevents unwanted stretching */
+        flex-shrink: 0;
+        /* Prevents shrinking */
+        max-height: fit-content;
+        /* Ensures it only takes needed space */
+      }
+      #carousel_c8a7 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 50px 0;
+        background-color: #121212;
+      }
+
+      /* Post Card */
+      .post-card {
+        width: 320px;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #1e1e1e;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .post-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 24px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Image Section */
+      .post-image-container {
+        width: 100%;
+        height: 250px;
+        /* Adjusted for better display */
+        overflow: hidden;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+      }
+
+      .post-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Footer Section */
+      .post-footer {
+        padding: 15px;
+        background: #2a2a2a;
+        color: #fff;
+      }
+
+      /* Post Title */
+      .post-footer h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      /* Posted By */
+      .post-footer p {
+        font-size: 14px;
+        color: #ccc;
+        margin-bottom: 10px;
+      }
+
+      /* Like Section */
+      .like-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* Like Icon */
+      .fa-heart {
+        cursor: pointer;
+        font-size: 20px;
+        color: #ff4d4d;
+        transition: transform 0.2s, color 0.2s;
+      }
+
+      .fa-heart:hover {
+        transform: scale(1.2);
+        color: #ff0000;
+      }
+    </style>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function getLike(comid, id, count) {
+      var ur = "{% url 'User:ajaxlikepost' %}";
+      $.ajax({
+        url: ur,
+        data: { comid: comid },
+        success: function (data) {
+          if (data.color == 0) {
+            document.getElementById(id).classList.remove("fa-regular", "fa-heart");
+            document.getElementById(id).classList.add("fa-solid", "fa-heart", "text-danger");
+          } else {
+            document.getElementById(id).classList.remove("fa-solid", "fa-heart", "text-danger");
+            document.getElementById(id).classList.add("fa-regular", "fa-heart");
+          }
+          document.getElementById(count).innerHTML = data.count;
+        },
+      });
+    }
+  </script>
+  <footer class="u-align-center u-clearfix u-container-align-center u-footer u-grey-80 u-footer" id="sec-60b1">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the Text Element.</p>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>

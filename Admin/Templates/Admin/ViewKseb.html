@@ -1,0 +1,56 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>E-mail</td>
+                <td>Contact</td>
+                <td>Address</td>
+                <td>District</td>
+                <td>Place</td>
+                <td>Local place</td>
+                <td>Proof</td>
+                <td>Action</td>
+            </tr>
+            {% for i in kseb %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.kseb_name}}</td>
+                <td>{{i.kseb_email}}</td>
+                <td>{{i.kseb_address}}</td>
+                <td>{{i.kseb_contact}}</td>
+                <td>{{i.localplace.place.district.district_name}}</td>
+                <td>{{i.localplace.place.place_name}}</td>
+                <td>{{i.localplace.local_place}}</td>
+                <td><a href="{{i.kseb_proof}}">View Proof</a></td>
+                <td>
+                    {% if i.kseb_status == 1 %}
+                    <a href="{% url 'Admin:ksebreject' i.kseb_id %}">Reject</a>
+                    {% elif i.kseb_status == 2 %}
+                    <a href="{% url 'Admin:ksebaccept' i.kseb_id %}">Accept</a>
+                    {% else %}
+                    <a href="{% url 'Admin:ksebaccept' i.kseb_id %}">Accept</a>
+                    <a href="{% url 'Admin:ksebreject' i.kseb_id %}">Reject</a>
+
+                    {% endif %}
+                    </td>
+                    
+                  
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

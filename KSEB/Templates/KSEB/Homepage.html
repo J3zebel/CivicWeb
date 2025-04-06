@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSEB Portal</title>
+    <link rel="stylesheet" href="{% static 'KSEB/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero {
+    background-image: url("{% static 'KSEB/images/kseb1.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    background-position: bottom;
+
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'KSEB/images/kseb-logo.png' %}" width="250" height="100" alt="KSEB Logo" class="kseb-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'KSEB:homepage' %}">Home</a></li>
+                    <li><a href="{% url 'KSEB:myprofile' %}">Profile</a></li>
+                    <li><a href="{% url 'KSEB:viewcomplaint' %}">View Complaints</a></li>
+                    <li><a href="{% url 'KSEB:viewreply' %}">View Requests</a></li>
+                    <li><a href="{% url 'KSEB:publicpost' %}">Add Post</a></li>
+                    <li><a href="{% url 'KSEB:logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" >
+            <h2>Welcome to KSEB</h2>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="{% static 'KSEB/images/electricity-billing.jpg' %}" alt="Electricity Billing">
+                    <h3>Electricity Billing</h3>
+                    <p>Manage your electricity bills and payments easily online.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/smart-metering.cms' %}" alt="Smart Metering">
+                    <h3>Smart Metering</h3>
+                    <p>Monitor and control your energy usage with smart meters.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/renewable-energy.jpg' %}" alt="Renewable Energy">
+                    <h3>Renewable Energy</h3>
+                    <p>Explore our initiatives in solar and wind energy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news">
+        <div class="container">
+            <h2>Latest News</h2>
+            <div class="news-cards">
+                <div class="card">
+                    <h3>New Solar Plant Inauguration</h3>
+                    <p>KSEB has inaugurated a new solar plant in the district, aiming to boost renewable energy production.</p>
+                </div>
+                <div class="card">
+                    <h3>Energy Saving Tips</h3>
+                    <p>Learn how to save energy at home with our top tips and recommendations.</p>
+                </div>
+                <div class="card">
+                    <h3>Community Engagement</h3>
+                    <p>Join our community programs to promote sustainable energy practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2>Customer Support</h2>
+            <div class="support-info">
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@kseb.com</p>
+                    <p>Phone: +91 123 456 7890</p>
+                </div>
+                <div class="faqs">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about billing, outages, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>KSEB Head Office</p>
+                    <p>Phone: +91 123 456 7890</p>
+                    <p>Email: info@kseb.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 KSEB Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'KSEB/scripts.js' %}"></script>
+</body>
+</html> 

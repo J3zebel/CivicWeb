@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - Same as in admin-dashboard.html -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">
+                    <div class="menu-category-title">Dashboard</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Location Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-district.html">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Districts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-place.html">
+                                <i class="fas fa-map"></i>
+                                <span>Places</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-localplace.html">
+                                <i class="fas fa-street-view"></i>
+                                <span>Local Places</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Complaint Types</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-ksebcomplainttype.html">
+                                <i class="fas fa-bolt"></i>
+                                <span>KSEB Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-mvdcomplainttype.html">
+                                <i class="fas fa-car"></i>
+                                <span>MVD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-pwdcomplainttype.html">
+                                <i class="fas fa-road"></i>
+                                <span>PWD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-muncipalitycomplainttype.html">
+                                <i class="fas fa-city"></i>
+                                <span>Municipality Complaints</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Department Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-viewmuncipality.html">
+                                <i class="fas fa-building"></i>
+                                <span>View Municipality</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewkseb.html">
+                                <i class="fas fa-plug"></i>
+                                <span>View KSEB</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewpwd.html">
+                                <i class="fas fa-hard-hat"></i>
+                                <span>View PWD</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewmvd.html">
+                                <i class="fas fa-truck"></i>
+                                <span>View MVD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">User Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-users.html" class="active">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicpost.html">
+                                <i class="fas fa-clipboard"></i>
+                                <span>Public Posts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicrequests.html">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Public Requests</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Settings</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-cog"></i>
+                                <span>General Settings</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Admin Profile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="login.html">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="notifications-dropdown">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="dropdown-menu" id="notifications-menu">
+                            <a href="#" class="dropdown-item">
+                                <strong>New complaint registered</strong>
+                                <p>A new KSEB complaint has been registered</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>User registration</strong>
+                                <p>5 new users registered today</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>System update</strong>
+                                <p>System maintenance scheduled for tonight</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">View all notifications</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="profile-dropdown">
+                            <img src="/placeholder.svg?height=36&width=36" alt="Admin">
+                            <span>Admin User</span>
+                        </button>
+                        <div class="dropdown-menu" id="profile-menu">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- User Management Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">User Management</h1>
+                
+                <!-- User Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2,845</h3>
+                            <p>Total Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2,156</h3>
+                            <p>Active Users</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>432</h3>
+                            <p>New This Month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-user-slash"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>257</h3>
+                            <p>Inactive Users</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Management Tools -->
+                <div class="form-container">
+                    <div class="form-title">User Search & Filters</div>
+                    <form class="filter-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="search-user">Search Users</label>
+                                <input type="text" id="search-user" class="form-control" placeholder="Search by name, email, or ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-status">Status</label>
+                                <select id="filter-status" class="form-control">
+                                    <option value="">All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="pending">Pending Verification</option>
+                                    <option value="blocked">Blocked</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-role">Role</label>
+                                <select id="filter-role" class="form-control">
+                                    <option value="">All Roles</option>
+                                    <option value="user">Regular User</option>
+                                    <option value="department">Department User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- User Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>User List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-primary" id="add-user-btn">
+                                <i class="fas fa-user-plus"></i> Add User
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Role</th>
+                                    <th>District</th>
+                                    <th>Joined Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#U1001</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>rahul.sharma@example.com</td>
+                                    <td>+91 98765 43210</td>
+                                    <td>Regular User</td>
+                                    <td>Kochi</td>
+                                    <td>2023-01-15</td>
+                                    <td><span class="status status-active">Active</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View User"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit User"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete User"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#U1002</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Priya Patel</span>
+                                        </div>
+                                    </td>
+                                    <td>priya.patel@example.com</td>
+                                    <td>+91 87654 32109</td>
+                                    <td>Department User</td>
+                                    <td>Trivandrum</td>
+                                    <td>2023-02-10</td>
+                                    <td><span class="status status-active">Active</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View User"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit User"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete User"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#U1003</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Arun Kumar</span>
+                                        </div>
+                                    </td>
+                                    <td>arun.kumar@example.com</td>
+                                    <td>+91 76543 21098</td>
+                                    <td>Regular User</td>
+                                    <td>Kozhikode</td>
+                                    <td>2023-02-22</td>
+                                    <td><span class="status status-inactive">Inactive</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View User"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit User"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete User"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#U1004</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Meera Nair</span>
+                                        </div>
+                                    </td>
+                                    <td>meera.nair@example.com</td>
+                                    <td>+91 65432 10987</td>
+                                    <td>Admin</td>
+                                    <td>Thrissur</td>
+                                    <td>2022-11-05</td>
+                                    <td><span class="status status-active">Active</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View User"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit User"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete User"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#U1005</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Vijay Menon</span>
+                                        </div>
+                                    </td>
+                                    <td>vijay.menon@example.com</td>
+                                    <td>+91 54321 09876</td>
+                                    <td>Department User</td>
+                                    <td>Palakkad</td>
+                                    <td>2023-03-01</td>
+                                    <td><span class="status status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View User"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit User"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete User"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Add/Edit User Modal -->
+                <div class="modal" id="user-modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modal-title">Add New User</h3>
+                            <button class="modal-close" id="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="user-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name">First Name</label>
+                                        <input type="text" id="first-name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name">Last Name</label>
+                                        <input type="text" id="last-name" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        <select id="role" class="form-control" required>
+                                            <option value="">Select Role</option>
+                                            <option value="user">Regular User</option>
+                                            <option value="department">Department User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district">District</label>
+                                        <select id="district" class="form-control" required>
+                                            <option value="">Select District</option>
+                                            <option value="kochi">Kochi</option>
+                                            <option value="trivandrum">Trivandrum</option>
+                                            <option value="kozhikode">Kozhikode</option>
+                                            <option value="thrissur">Thrissur</option>
+                                            <option value="palakkad">Palakkad</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" class="form-control">
+                                        <small class="form-text">Leave blank to keep current password (for editing)</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm Password</label>
+                                        <input type="password" id="confirm-password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select id="status" class="form-control" required>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                        <option value="pending">Pending Verification</option>
+                                        <option value="blocked">Blocked</option>
+                                    </select>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Save User</button>
+                                    <button type="button" class="btn btn-secondary" id="cancel-form">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Toggle dropdowns
+        document.getElementById('notifications-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notifications-menu').classList.toggle('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        document.getElementById('profile-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profile-menu').classList.toggle('show');
+            document.getElementById('notifications-menu').classList.remove('show');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('notifications-menu').classList.remove('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        // User Modal
+        const modal = document.getElementById('user-modal');
+        const addUserBtn = document.getElementById('add-user-btn');
+        const closeModal = document.getElementById('close-modal');
+        const cancelForm = document.getElementById('cancel-form');
+        
+        addUserBtn.addEventListener('click', function() {
+            document.getElementById('modal-title').textContent = 'Add New User';
+            document.getElementById('user-form').reset();
+            modal.style.display = 'block';
+        });
+        
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        cancelForm.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Edit User
+        const editButtons = document.querySelectorAll('.action-edit');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('modal-title').textContent = 'Edit User';
+                // In a real app, you would populate the form with user data
+                modal.style.display = 'block';
+            });
+        });
+        
+        // Form submission
+        document.getElementById('user-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the user data
+            alert('User saved successfully!');
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

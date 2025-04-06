@@ -1,0 +1,5 @@
+<select name="mun" id="mun"><option value="">--Select--</option>
+    {% for i in muncipality %}
+    <option value="{{i.mun_id}}">{{i.mun_name}}</option>
+    {% endfor %}
+    </select>

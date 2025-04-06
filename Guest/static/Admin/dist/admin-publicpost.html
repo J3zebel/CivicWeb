@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Posts - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+    <style>
+        /* Additional styles for public posts */
+        .post-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .post-author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .post-author-info {
+            flex: 1;
+        }
+        
+        .post-author-name {
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .post-time {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .post-content {
+            padding: 15px;
+        }
+        
+        .post-text {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .post-stats {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .post-stat {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-stat i {
+            margin-right: 5px;
+        }
+        
+        .post-category {
+            background-color: #f0f7ff;
+            color: #0078d4;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - Same as in admin-dashboard.html -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">
+                    <div class="menu-category-title">Dashboard</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Location Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-district.html">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Districts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-place.html">
+                                <i class="fas fa-map"></i>
+                                <span>Places</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-localplace.html">
+                                <i class="fas fa-street-view"></i>
+                                <span>Local Places</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Complaint Types</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-ksebcomplainttype.html">
+                                <i class="fas fa-bolt"></i>
+                                <span>KSEB Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-mvdcomplainttype.html">
+                                <i class="fas fa-car"></i>
+                                <span>MVD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-pwdcomplainttype.html">
+                                <i class="fas fa-road"></i>
+                                <span>PWD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-muncipalitycomplainttype.html">
+                                <i class="fas fa-city"></i>
+                                <span>Municipality Complaints</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Department Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-viewmuncipality.html">
+                                <i class="fas fa-building"></i>
+                                <span>View Municipality</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewkseb.html">
+                                <i class="fas fa-plug"></i>
+                                <span>View KSEB</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewpwd.html">
+                                <i class="fas fa-hard-hat"></i>
+                                <span>View PWD</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewmvd.html">
+                                <i class="fas fa-truck"></i>
+                                <span>View MVD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">User Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicpost.html" class="active">
+                                <i class="fas fa-clipboard"></i>
+                                <span>Public Posts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicrequests.html">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Public Requests</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Settings</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-cog"></i>
+                                <span>General Settings</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Admin Profile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="login.html">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="notifications-dropdown">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="dropdown-menu" id="notifications-menu">
+                            <a href="#" class="dropdown-item">
+                                <strong>New complaint registered</strong>
+                                <p>A new KSEB complaint has been registered</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>User registration</strong>
+                                <p>5 new users registered today</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>System update</strong>
+                                <p>System maintenance scheduled for tonight</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">View all notifications</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="profile-dropdown">
+                            <img src="/placeholder.svg?height=36&width=36" alt="Admin">
+                            <span>Admin User</span>
+                        </button>
+                        <div class="dropdown-menu" id="profile-menu">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Public Posts Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Public Posts</h1>
+                
+                <!-- Post Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,245</h3>
+                            <p>Total Posts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>45,678</h3>
+                            <p>Total Views</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>3,567</h3>
+                            <p>Comments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>28</h3>
+                            <p>Reported Posts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post Filters -->
+                <div class="form-container">
+                    <div class="form-title">Post Filters</div>
+                    <form class="filter-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="search-post">Search Posts</label>
+                                <input type="text" id="search-post" class="form-control" placeholder="Search by title, content, or author">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-category">Category</label>
+                                <select id="filter-category" class="form-control">
+                                    <option value="">All Categories</option>
+                                    <option value="electricity">Electricity</option>
+                                    <option value="roads">Roads</option>
+                                    <option value="water">Water Supply</option>
+                                    <option value="waste">Waste Management</option>
+                                    <option value="transport">Transportation</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-date">Date Range</label>
+                                <select id="filter-date" class="form-control">
+                                    <option value="all">All Time</option>
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="custom">Custom Range</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Posts Grid -->
+                <div class="post-grid">
+                    <!-- Post 1 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <img src="/placeholder.svg?height=40&width=40" alt="User" class="post-author-avatar">
+                            <div class="post-author-info">
+                                <div class="post-author-name">Rahul Sharma</div>
+                                <div class="post-time">March 22, 2023 at 10:45 AM</div>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-edit" title="Edit Post"><i class="fas fa-edit"></i></button>
+                                <button class="action-delete" title="Delete Post"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-text">
+                                <p>Frequent power outages in Kochi Central area for the past week. This is affecting businesses and daily life. @KSEB please look into this issue urgently.</p>
+                            </div>
+                            <img src="/placeholder.svg?height=300&width=400" alt="Power Outage" class="post-image">
+                        </div>
+                        <div class="post-meta">
+                            <div class="post-stats">
+                                <div class="post-stat"><i class="fas fa-heart"></i> 45</div>
+                                <div class="post-stat"><i class="fas fa-comment"></i> 12</div>
+                                <div class="post-stat"><i class="fas fa-share"></i> 8</div>
+                            </div>
+                            <div class="post-category">Electricity</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 2 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <img src="/placeholder.svg?height=40&width=40" alt="User" class="post-author-avatar">
+                            <div class="post-author-info">
+                                <div class="post-author-name">Priya Patel</div>
+                                <div class="post-time">March 21, 2023 at 3:20 PM</div>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-edit" title="Edit Post"><i class="fas fa-edit"></i></button>
+                                <button class="action-delete" title="Delete Post"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-text">
+                                <p>The road near Trivandrum East junction has multiple potholes causing traffic jams and accidents. This needs immediate attention from PWD.</p>
+                            </div>
+                            <img src="/placeholder.svg?height=300&width=400" alt="Road Damage" class="post-image">
+                        </div>
+                        <div class="post-meta">
+                            <div class="post-stats">
+                                <div class="post-stat"><i class="fas fa-heart"></i> 78</div>
+                                <div class="post-stat"><i class="fas fa-comment"></i> 23</div>
+                                <div class="post-stat"><i class="fas fa-share"></i> 15</div>
+                            </div>
+                            <div class="post-category">Roads</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 3 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <img src="/placeholder.svg?height=40&width=40" alt="User" class="post-author-avatar">
+                            <div class="post-author-info">
+                                <div class="post-author-name">Arun Kumar</div>
+                                <div class="post-time">March 20, 2023 at 9:15 AM</div>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-edit" title="Edit Post"><i class="fas fa-edit"></i></button>
+                                <button class="action-delete" title="Delete Post"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-text">
+                                <p>Water supply issues in Kozhikode North area. No water for the past 3 days. Municipality needs to address this immediately as it's affecting hundreds of families.</p>
+                            </div>
+                            <img src="/placeholder.svg?height=300&width=400" alt="Water Supply Issue" class="post-image">
+                        </div>
+                        <div class="post-meta">
+                            <div class="post-stats">
+                                <div class="post-stat"><i class="fas fa-heart"></i> 92</div>
+                                <div class="post-stat"><i class="fas fa-comment"></i> 34</div>
+                                <div class="post-stat"><i class="fas fa-share"></i> 27</div>
+                            </div>
+                            <div class="post-category">Water Supply</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 4 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <img src="/placeholder.svg?height=40&width=40" alt="User" class="post-author-avatar">
+                            <div class="post-author-info">
+                                <div class="post-author-name">Meera Nair</div>
+                                <div class="post-time">March 19, 2023 at 2:30 PM</div>
+                            </div>
+                            <div class="post-actions">
+                                <button class="action-edit" title="Edit Post"><i class="fas fa-edit"></i></button>
+                                <button class="action-delete" title="Delete Post"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-text">
+                                <p>Traffic signal at Thrissur Central junction is not working properly. This is causing chaos during peak hours. MVD please fix this as soon as possible.</p>
+                            </div>
+                            <img src="/placeholder.svg?height=300&width=400" alt="Traffic Signal Issue" class="post-image">
+                        </div>
+                        <div class="post-meta">
+                            <div class="post-stats">
+                                <div class="post-stat"><i class="fas fa-heart"></i> 56</div>
+                                <div class="post-stat"><i class="fas fa-comment"></i> 18</div>
+                                <div class="post-stat"><i class="fas fa-share"></i> 12</div>
+                            </div>
+                            <div class="post-category">Transportation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                        <li class="pagination-item"><a href="#" class="active">1</a></li>
+                        <li class="pagination-item"><a href="#">2</a></li>
+                        <li class="pagination-item"><a href="#">3</a></li>
+                        <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Toggle dropdowns
+        document.getElementById('notifications-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notifications-menu').classList.toggle('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        document.getElementById('profile-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profile-menu').classList.toggle('show');
+            document.getElementById('notifications-menu').classList.remove('show');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('notifications-menu').classList.remove('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+    </script>
+</body>
+</html>

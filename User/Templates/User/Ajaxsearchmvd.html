@@ -1,0 +1,19 @@
+
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Contact</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Action</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.mvd_name}}</td>
+        <td> {{i.mvd_contact}}</td>
+        <td>{{i.mvd_email}}</td>
+        <td>{{i.mvd_address}}</td>
+        <td ><a href="{% url 'User:mvdcomplaint' i.mvd_id %}">Complaint</a></td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Municipality - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - abbreviated for brevity -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <!-- Sidebar menu items -->
+                <div class="menu-category">
+                    <div class="menu-category-title">Department Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-viewmuncipality.html" class="active">
+                                <i class="fas fa-building"></i>
+                                <span>View Municipality</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewkseb.html">
+                                <i class="fas fa-plug"></i>
+                                <span>View KSEB</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewpwd.html">
+                                <i class="fas fa-hard-hat"></i>
+                                <span>View PWD</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewmvd.html">
+                                <i class="fas fa-truck"></i>
+                                <span>View MVD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Other menu categories -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header - abbreviated for brevity -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <!-- Header content -->
+                </div>
+            </header>
+
+            <!-- Municipality Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Municipality Management</h1>
+                
+                <!-- Municipality Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>93</h3>
+                            <p>Total Municipalities</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>412</h3>
+                            <p>Staff Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>876</h3>
+                            <p>Active Complaints</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>124</h3>
+                            <p>Urgent Issues</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Municipality Form -->
+                <div class="form-container">
+                    <div class="form-title">Add New Municipality</div>
+                    <form id="municipality-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="municipality-name">Municipality Name</label>
+                                <input type="text" id="municipality-name" class="form-control" placeholder="Enter municipality name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <select id="district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                    <option value="1">Thiruvananthapuram</option>
+                                    <option value="2">Kollam</option>
+                                    <option value="3">Pathanamthitta</option>
+                                    <option value="4">Alappuzha</option>
+                                    <option value="5">Kottayam</option>
+                                    <!-- Other districts -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="municipality-type">Municipality Type</label>
+                                <select id="municipality-type" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="corporation">Corporation</option>
+                                    <option value="municipality">Municipality</option>
+                                    <option value="panchayat">Panchayat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="municipality-population">Population</label>
+                                <input type="number" id="municipality-population" class="form-control" placeholder="Enter population">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="municipality-contact">Contact Number</label>
+                                <input type="tel" id="municipality-contact" class="form-control" placeholder="Enter contact number">
+                            </div>
+                            <div class="form-group">
+                                <label for="municipality-email">Email</label>
+                                <input type="email" id="municipality-email" class="form-control" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality-address">Address</label>
+                            <textarea id="municipality-address" class="form-control" rows="3" placeholder="Enter address"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add Municipality</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Municipalities Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>Municipalities List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Municipality Name</th>
+                                    <th>District</th>
+                                    <th>Type</th>
+                                    <th>Population</th>
+                                    <th>Contact</th>
+                                    <th>Active Complaints</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Thiruvananthapuram Corporation</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Corporation</td>
+                                    <td>957,730</td>
+                                    <td>0471-2320821</td>
+                                    <td>124</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Municipality"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Municipality"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Municipality"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Kochi Corporation</td>
+                                    <td>Ernakulam</td>
+                                    <td>Corporation</td>
+                                    <td>677,381</td>
+                                    <td>0484-2369007</td>
+                                    <td>98</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Municipality"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Municipality"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Municipality"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Kozhikode Corporation</td>
+                                    <td>Kozhikode</td>
+                                    <td>Corporation</td>
+                                    <td>550,440</td>
+                                    <td>0495-2365040</td>
+                                    <td>87</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Municipality"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Municipality"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Municipality"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Thrissur Corporation</td>
+                                    <td>Thrissur</td>
+                                    <td>Corporation</td>
+                                    <td>315,957</td>
+                                    <td>0487-2420720</td>
+                                    <td>76</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Municipality"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Municipality"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Municipality"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Kollam Corporation</td>
+                                    <td>Kollam</td>
+                                    <td>Corporation</td>
+                                    <td>349,033</td>
+                                    <td>0474-2745625</td>
+                                    <td>65</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Municipality"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Municipality"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Municipality"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Form submission
+        document.getElementById('municipality-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the municipality data
+            alert('Municipality added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

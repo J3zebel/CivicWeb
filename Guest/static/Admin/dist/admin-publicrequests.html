@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Requests - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - Same as in admin-dashboard.html -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <div class="menu-category">
+                    <div class="menu-category-title">Dashboard</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Location Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-district.html">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Districts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-place.html">
+                                <i class="fas fa-map"></i>
+                                <span>Places</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-localplace.html">
+                                <i class="fas fa-street-view"></i>
+                                <span>Local Places</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Complaint Types</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-ksebcomplainttype.html">
+                                <i class="fas fa-bolt"></i>
+                                <span>KSEB Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-mvdcomplainttype.html">
+                                <i class="fas fa-car"></i>
+                                <span>MVD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-pwdcomplainttype.html">
+                                <i class="fas fa-road"></i>
+                                <span>PWD Complaints</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-muncipalitycomplainttype.html">
+                                <i class="fas fa-city"></i>
+                                <span>Municipality Complaints</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Department Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-viewmuncipality.html">
+                                <i class="fas fa-building"></i>
+                                <span>View Municipality</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewkseb.html">
+                                <i class="fas fa-plug"></i>
+                                <span>View KSEB</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewpwd.html">
+                                <i class="fas fa-hard-hat"></i>
+                                <span>View PWD</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewmvd.html">
+                                <i class="fas fa-truck"></i>
+                                <span>View MVD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">User Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-users.html">
+                                <i class="fas fa-users"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicpost.html">
+                                <i class="fas fa-clipboard"></i>
+                                <span>Public Posts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-publicrequests.html" class="active">
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Public Requests</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Settings</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-cog"></i>
+                                <span>General Settings</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Admin Profile</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="login.html">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="notifications-dropdown">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="dropdown-menu" id="notifications-menu">
+                            <a href="#" class="dropdown-item">
+                                <strong>New complaint registered</strong>
+                                <p>A new KSEB complaint has been registered</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>User registration</strong>
+                                <p>5 new users registered today</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <strong>System update</strong>
+                                <p>System maintenance scheduled for tonight</p>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">View all notifications</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="profile-dropdown">
+                            <img src="/placeholder.svg?height=36&width=36" alt="Admin">
+                            <span>Admin User</span>
+                        </button>
+                        <div class="dropdown-menu" id="profile-menu">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i> Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="login.html" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Public Requests Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">Public Requests</h1>
+                
+                <!-- Request Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>856</h3>
+                            <p>Total Requests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>423</h3>
+                            <p>Approved</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>312</h3>
+                            <p>Pending</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>121</h3>
+                            <p>Rejected</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Request Filters -->
+                <div class="form-container">
+                    <div class="form-title">Request Filters</div>
+                    <form class="filter-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="search-request">Search Requests</label>
+                                <input type="text" id="search-request" class="form-control" placeholder="Search by title, description, or requester">
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-department">Department</label>
+                                <select id="filter-department" class="form-control">
+                                    <option value="">All Departments</option>
+                                    <option value="kseb">KSEB</option>
+                                    <option value="pwd">PWD</option>
+                                    <option value="mvd">MVD</option>
+                                    <option value="municipality">Municipality</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="filter-status">Status</label>
+                                <select id="filter-status" class="form-control">
+                                    <option value="">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                    <option value="in-progress">In Progress</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Requests Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>Public Requests</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Requester</th>
+                                    <th>Title</th>
+                                    <th>Department</th>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#R1001</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Rahul Sharma</span>
+                                        </div>
+                                    </td>
+                                    <td>Power Line Repair</td>
+                                    <td>KSEB</td>
+                                    <td>Kochi Central</td>
+                                    <td>2023-03-22</td>
+                                    <td><span class="badge badge-high">High</span></td>
+                                    <td><span class="status status-pending">Pending</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Request"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Request"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Request"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#R1002</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Priya Patel</span>
+                                        </div>
+                                    </td>
+                                    <td>Road Repair</td>
+                                    <td>PWD</td>
+                                    <td>Trivandrum East</td>
+                                    <td>2023-03-21</td>
+                                    <td><span class="badge badge-medium">Medium</span></td>
+                                    <td><span class="status status-active">In Progress</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Request"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Request"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Request"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#R1003</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Arun Kumar</span>
+                                        </div>
+                                    </td>
+                                    <td>Waste Collection</td>
+                                    <td>Municipality</td>
+                                    <td>Kozhikode North</td>
+                                    <td>2023-03-20</td>
+                                    <td><span class="badge badge-low">Low</span></td>
+                                    <td><span class="status status-active">In Progress</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Request"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Request"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Request"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#R1004</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Meera Nair</span>
+                                        </div>
+                                    </td>
+                                    <td>Traffic Signal Repair</td>
+                                    <td>MVD</td>
+                                    <td>Thrissur Central</td>
+                                    <td>2023-03-19</td>
+                                    <td><span class="badge badge-high">High</span></td>
+                                    <td><span class="status status-inactive">Completed</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Request"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Request"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Request"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#R1005</td>
+                                    <td>
+                                        <div class="user-info">
+                                            <img src="/placeholder.svg?height=32&width=32" alt="User" class="user-avatar">
+                                            <span>Vijay Menon</span>
+                                        </div>
+                                    </td>
+                                    <td>Transformer Installation</td>
+                                    <td>KSEB</td>
+                                    <td>Palakkad West</td>
+                                    <td>2023-03-18</td>
+                                    <td><span class="badge badge-medium">Medium</span></td>
+                                    <td><span class="status status-danger">Rejected</span></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Request"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Request"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Request"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Request Details Modal -->
+                <div class="modal" id="request-modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modal-title">Request Details</h3>
+                            <button class="modal-close" id="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="request-details">
+                                <div class="request-header">
+                                    <h4>Power Line Repair</h4>
+                                    <span class="status status-pending">Pending</span>
+                                </div>
+                                <div class="request-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Request ID:</span>
+                                        <span class="info-value">#R1001</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Requester:</span>
+                                        <span class="info-value">Rahul Sharma</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Department:</span>
+                                        <span class="info-value">KSEB</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Location:</span>
+                                        <span class="info-value">Kochi Central</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Date Submitted:</span>
+                                        <span class="info-value">March 22, 2023</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Priority:</span>
+                                        <span class="info-value high-priority">High</span>
+                                    </div>
+                                </div>
+                                <div class="request-description">
+                                    <h5>Description</h5>
+                                    <p>Power line damaged due to heavy winds last night. Several shops and residences in the area are without electricity. Need urgent repair as businesses are affected.</p>
+                                </div>
+                                <div class="request-attachments">
+                                    <h5>Attachments</h5>
+                                    <div class="attachment-list">
+                                        <div class="attachment-item">
+                                            <i class="fas fa-image"></i>
+                                            <span>damaged-power-line.jpg</span>
+                                            <a href="#" class="attachment-action"><i class="fas fa-download"></i></a>
+                                        </div>
+                                        <div class="attachment-item">
+                                            <i class="fas fa-file-pdf"></i>
+                                            <span>location-details.pdf</span>
+                                            <a href="#" class="attachment-action"><i class="fas fa-download"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="request-status-update">
+                                    <h5>Update Status</h5>
+                                    <form id="status-update-form">
+                                        <div class="form-group">
+                                            <label for="update-status">Status</label>
+                                            <select id="update-status" class="form-control">
+                                                <option value="pending">Pending</option>
+                                                <option value="approved">Approved</option>
+                                                <option value="rejected">Rejected</option>
+                                                <option value="in-progress">In Progress</option>
+                                                <option value="completed">Completed</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="status-comment">Comment</label>
+                                            <textarea id="status-comment" class="form-control" rows="3" placeholder="Add a comment about this status update"></textarea>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-primary">Update Status</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Toggle dropdowns
+        document.getElementById('notifications-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notifications-menu').classList.toggle('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        document.getElementById('profile-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profile-menu').classList.toggle('show');
+            document.getElementById('notifications-menu').classList.remove('show');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('notifications-menu').classList.remove('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        // View Request Details
+        const viewButtons = document.querySelectorAll('.action-view');
+        const requestModal = document.getElementById('request-modal');
+        const closeModal = document.getElementById('close-modal');
+        
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                requestModal.style.display = 'block';
+            });
+        });
+        
+        closeModal.addEventListener('click', function() {
+            requestModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (event.target == requestModal) {
+                requestModal.style.display = 'none';
+            }
+        });
+        
+        // Form submission
+        document.getElementById('status-update-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the status update
+            alert('Status updated successfully!');
+            requestModal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

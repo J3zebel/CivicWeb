@@ -1,0 +1,161 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+</head>
+<body>
+    <a href="{% url 'MVD:myprofile' %}">Profile</a>
+    <a href="{% url 'MVD:viewcomplaint' %}">View Complaint</a>
+</body>
+</html> -->
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVD Portal</title>
+    <link rel="stylesheet" href="{% static 'KSEB/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero {
+    background-image: url("{% static 'KSEB/images/MVD.jpeg' %}");
+    background-size: auto;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    background-position: bottom;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'KSEB/images/mvd-logo.jpg' %}" width="150" height="100" alt="Mvd Logo" class="mvd-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'MVD:homepage' %}">Home</a></li>
+                    <li><a href="{% url 'MVD:myprofile' %}">Profile</a></li>
+                    <li><a href="{% url 'MVD:viewcomplaint' %}">View Complaints</a></li>
+                    <li><a href="{% url 'MVD:viewreply' %}">View Requests</a></li>
+                    <li><a href="{% url 'MVD:publicpost' %}">Add Post</a></li>
+                    <li><a href="{% url 'MVD:logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Your MVD</h2>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="{% static 'KSEB/images/vehicle-registration.jpeg' %}" alt="Vehicle Registration">
+                    <h3>Vehicle Registration</h3>
+                    <p>Register your vehicle or renew registration online quickly.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/driving-license.jpeg' %}" alt="Driving License">
+                    <h3>Driving License</h3>
+                    <p>Apply for or renew your driving license with ease.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/traffic-fines.webp' %}" alt="Traffic Fines">
+                    <h3>Traffic Fines</h3>
+                    <p>Check and pay your traffic fines online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="news">
+        <div class="container">
+            <h2>Latest News</h2>
+            <div class="news-cards">
+                <div class="card">
+                    <h3>New Online Portal Launch</h3>
+                    <p>MVD has launched a new portal for faster license and registration services.</p>
+                </div>
+                <div class="card">
+                    <h3>Road Safety Campaign</h3>
+                    <p>Join our campaign to promote safe driving habits this month.</p>
+                </div>
+                <div class="card">
+                    <h3>Vehicle Inspection Schedule</h3>
+                    <p>Updated dates for mandatory vehicle inspections announced.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="support">
+        <div class="container">
+            <h2>Customer Support</h2>
+            <div class="support-info">
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@mvd.gov.in</p>
+                    <p>Phone: +91 987 654 3210</p>
+                </div>
+                <div class="faqs">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about licensing, registration, and fines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>MVD Office</p>
+                    <p>Phone: +91 654 123 3820</p>
+                    <p>Email: info@mvd.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MVD Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'KSEB/scripts.js' %}"></script>
+</body>
+</html> 

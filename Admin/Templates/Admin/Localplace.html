@@ -1,0 +1,96 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+        <!-- Local Place Management Content -->
+        <div class="dashboard-content">
+            <h1 class="page-title">Local Place Management</h1>
+
+            <!-- Add Local Place Form -->
+            <div class="form-container">
+                <div class="form-title">Add New Local Place</div>
+                <form id="localplace-form" action="{% url 'Admin:localplace' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sel_district">District</label>
+                            <select id="sel_district" name="sel_district" class="form-control" required>
+                                <option value="">--Select--</option>
+                                {% for i in district %}
+                                <option value="{{ i.id }}">{{ i.district_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sel_place">Place</label>
+                            <select id="sel_place" name="sel_place" class="form-control" required>
+                                <option value="">--Select--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="local">Local Place</label>
+                            <input type="text" id="local" name="local" class="form-control" 
+                                   placeholder="Enter local place name" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Local Places Table -->
+            <div class="data-table-container">
+                <div class="data-table-header">
+                    <h3>Local Places List</h3>
+                    <div class="data-table-actions">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>District</th>
+                                <th>Place</th>
+                                <th>Local Place</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in local %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.place.district.district_name }}</td>
+                                <td>{{ i.place.place_name }}</td>
+                                <td>{{ i.local_place}}</td>
+                                <td>
+                                    <div class="actions">
+                                        <a href="{% url 'Admin:dellocal' i.id %}" class="action-delete" title="Delete Local Place" 
+                                           onclick="return confirm('Are you sure you want to delete {{ i.local }}?');">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">No local places found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if msg %}
+<script>
+    alert("{{ msg|escapejs }}");
+    window.location = "{% url 'Admin:localplace' %}";
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muncipality Portal</title>
+    <link rel="stylesheet" href="{% static 'KSEB/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero {
+    background-image: url("{% static 'KSEB/images/Slider10_0_2_0.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    background-position: bottom;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'KSEB/images/muncipality.png' %}" width="200" height="100" alt="Muncipality Logo" class="muncipality-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'Muncipality:homepage' %}">Home</a></li>
+                    <li><a href="{% url 'Muncipality:myprofile' %}">Profile</a></li>
+                    <li><a href="{% url 'Muncipality:viewcomplaint' %}">View Complaints</a></li>
+                    <li><a href="{% url 'Muncipality:publicpost' %}">Add Post</a></li>
+                    <li><a href="{% url 'Muncipality:logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Your Municipality</h2>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="{% static 'KSEB/images/property tax.jpg' %}" alt="Property Tax">
+                    <h3>Property Tax</h3>
+                    <p>Pay and manage your property taxes online with ease.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/waste-management.jpg' %}" alt="Waste Management">
+                    <h3>Waste Management</h3>
+                    <p>Learn about our recycling programs and waste collection schedules.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/public-parks.jpg' %}" alt="Public Parks">
+                    <h3>Public Parks</h3>
+                    <p>Explore our well-maintained parks and recreational areas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="news">
+        <div class="container">
+            <h2>Latest News</h2>
+            <div class="news-cards">
+                <div class="card">
+                    <h3>New Community Center Opening</h3>
+                    <p>The municipality has opened a new community center to enhance local engagement.</p>
+                </div>
+                <div class="card">
+                    <h3>Road Maintenance Update</h3>
+                    <p>Check the latest schedule for road repairs and infrastructure improvements.</p>
+                </div>
+                <div class="card">
+                    <h3>Water Conservation Initiative</h3>
+                    <p>Join our efforts to promote sustainable water usage in the community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="container">
+            <h2>Customer Support</h2>
+            <div class="support-info">
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@muncipality.com</p>
+                    <p>Phone: +91 123 456 7890</p>
+                </div>
+                <div class="faqs">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about billing, outages, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Muncipality Office</p>
+                    <p>Phone: +91 654 123 3820</p>
+                    <p>Email: info@muncipality.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Muncipality Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'KSEB/scripts.js' %}"></script>
+</body>
+</html> 

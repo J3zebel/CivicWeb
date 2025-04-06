@@ -1,0 +1,132 @@
+{% extends 'PWD/Head.html' %}
+{% load static %}  <!-- Add this if not in Head.html -->
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muncipality - Edit Profile</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Form Section */
+        .edit-profile-section {
+            width: 100%;
+            background: #e6f0fa; /* Light blue background */
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .edit-profile-section h3 {
+            margin-bottom: 1.5rem;
+            color: #003087;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        .edit-form table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .edit-form td {
+            padding: 0.8rem;
+            vertical-align: top;
+        }
+
+        .edit-form td:first-child {
+            font-weight: bold;
+            color: #333;
+            width: 30%;
+        }
+
+        .edit-form input[type="text"],
+        .edit-form input[type="tel"],
+        .edit-form input[type="email"],
+        .edit-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #fff;
+            color: #333;
+        }
+
+        .edit-form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .edit-form input[type="submit"] {
+            background: #add8e6; /* Light blue button */
+            padding: 0.5rem 2rem;
+            border: none;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .edit-form input[type="submit"]:hover {
+            background: #87ceeb;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="edit-profile-section">
+            <h3>Edit Profile</h3>
+            <form action="" method="post" class="edit-form">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="txt_name" value="{{pwd.pwd_name}}" id="txt_name"></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td><input type="email" name="txt_email" value="{{pwd.pwd_email}}" id="txt_email"></td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                        <td><input type="tel" name="txt_contact" value="{{pwd.pwd_contact}}" id="txt_contact"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><textarea name="txt_address" id="txt_address" cols="30" rows="5"> {{pwd.pwd_address}} </textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Save"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
+{% endblock %}

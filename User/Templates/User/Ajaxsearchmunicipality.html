@@ -1,0 +1,19 @@
+
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Contact</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Action</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.mun_name}}</td>
+        <td> {{i.mun_contact}}</td>
+        <td>{{i.mun_email}}</td>
+        <td>{{i.mun_address}}</td>
+        <td ><a href="{% url 'User:muncipalitycomplaint' i.mun_id %}">Complaint</a></td>
+    </tr>
+    {% endfor %}
+</table>

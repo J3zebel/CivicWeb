@@ -1,0 +1,51 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>E-mail</td>
+                <td>Contact</td>
+                
+                <td>District</td>
+                <td>Place</td>
+                <td>Local place</td>
+                <td>Address</td>
+                <td>Muncipality</td>
+                <td>Photo</td>
+                <td>Action</td>
+            </tr>
+            {% for i in user %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.user_name}}</td>
+                <td>{{i.user_email}}</td>
+                <td>{{i.user_contact}}</td>
+                <td>{{i.localplace.place.district.district_name}}</td>
+                <td>{{i.localplace.place.place_name}}</td>
+                <td>{{i.localplace.local_place}}</td>
+                <td>{{i.user_address}}</td>
+                <td>{{i.muncipality.mun_name}}</td>
+                <td><a href="{{i.user_photo}}">View Photo</a></td>
+                <td> {% if i.user_status == 1 %}
+                    User removed
+                    {% else %}
+                    <a href="{% url 'Admin:userremove' i.user_id %}">Remove</a>
+                    {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

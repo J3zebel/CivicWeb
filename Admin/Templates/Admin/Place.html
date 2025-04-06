@@ -1,0 +1,91 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+    <!-- Place Management Content -->
+        <div class="dashboard-content">
+            <h1 class="page-title">Place Management</h1>
+
+            <!-- Add Place Form -->
+            <div class="form-container">
+                <div class="form-title">Add/Edit Place</div>
+                <form id="place-form" action="{% url 'Admin:place' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="district">District</label>
+                            <select id="district" name="district" class="form-control" required>
+                                <option value="">Select District</option>
+                                {% for i in district %}
+                                <option value="{{ i.id }}" {% if edit.district_id == i.id %}selected{% endif %}>
+                                    {{ i.district_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="place-name">Place Name</label>
+                            <input type="text" id="place-name" name="place" class="form-control" 
+                                   value="{{ edit.place_name|default:'' }}" placeholder="Enter place name" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Places Table -->
+            <div class="data-table-container">
+                <div class="data-table-header">
+                    <h3>Places List</h3>
+                    <div class="data-table-actions">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>District</th>
+                                <th>Place Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in place %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.district.district_name }}</td>
+                                <td>{{ i.place_name }}</td>
+                                <td>
+                                    <div class="actions">
+                                        <a href="{% url 'Admin:editplace' i.id %}" class="action-edit" title="Edit Place">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{% url 'Admin:delplace' i.id %}" class="action-delete" title="Delete Place" 
+                                           onclick="return confirm('Are you sure you want to delete {{ i.place_name }}?');">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4">No places found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if msg %}
+<script>
+    alert("{{ msg|escapejs }}");
+    window.location = "{% url 'Admin:place' %}";
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Contact</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Action</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{i.pwd_name}}</td>
+        <td> {{i.pwd_contact}}</td>
+        <td>{{i.pwd_email}}</td>
+        <td>{{i.pwd_address}}</td>
+        <td ><a href="{% url 'User:pwdcomplaint' i.pwd_id %}">Complaint</a></td>
+    </tr>
+    {% endfor %}
+</table>

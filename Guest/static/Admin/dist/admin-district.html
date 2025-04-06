@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>District Management - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - Same as in admin-dashboard.html -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <!-- Sidebar menu items - same as other pages -->
+                <!-- For brevity, sidebar content is abbreviated -->
+                <div class="menu-category">
+                    <div class="menu-category-title">Dashboard</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-category">
+                    <div class="menu-category-title">Location Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-district.html" class="active">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Districts</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-place.html">
+                                <i class="fas fa-map"></i>
+                                <span>Places</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-localplace.html">
+                                <i class="fas fa-street-view"></i>
+                                <span>Local Places</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Other menu categories -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <!-- Header content - same as other pages -->
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="notifications-dropdown">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <div class="dropdown-menu" id="notifications-menu">
+                            <!-- Notification items -->
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" id="profile-dropdown">
+                            <img src="/placeholder.svg?height=36&width=36" alt="Admin">
+                            <span>Admin User</span>
+                        </button>
+                        <div class="dropdown-menu" id="profile-menu">
+                            <!-- Profile menu items -->
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- District Management Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">District Management</h1>
+                
+                <!-- District Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>14</h3>
+                            <p>Total Districts</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>33.4M</h3>
+                            <p>Total Population</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>152</h3>
+                            <p>Municipalities</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87</h3>
+                            <p>Active Complaints</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add District Form -->
+                <div class="form-container">
+                    <div class="form-title">Add New District</div>
+                    <form id="district-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="district-name">District Name</label>
+                                <input type="text" id="district-name" class="form-control" placeholder="Enter district name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district-code">District Code</label>
+                                <input type="text" id="district-code" class="form-control" placeholder="Enter district code" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="district-headquarters">District Headquarters</label>
+                                <input type="text" id="district-headquarters" class="form-control" placeholder="Enter district headquarters">
+                            </div>
+                            <div class="form-group">
+                                <label for="district-population">Population</label>
+                                <input type="number" id="district-population" class="form-control" placeholder="Enter population">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="district-description">Description</label>
+                            <textarea id="district-description" class="form-control" rows="3" placeholder="Enter district description"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add District</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Districts Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>Districts List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>District Name</th>
+                                    <th>Code</th>
+                                    <th>Headquarters</th>
+                                    <th>Population</th>
+                                    <th>Places</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>TVM</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>3,301,427</td>
+                                    <td>78</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View District"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit District"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete District"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Kollam</td>
+                                    <td>KLM</td>
+                                    <td>Kollam</td>
+                                    <td>2,635,375</td>
+                                    <td>56</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View District"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit District"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete District"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Pathanamthitta</td>
+                                    <td>PTA</td>
+                                    <td>Pathanamthitta</td>
+                                    <td>1,197,412</td>
+                                    <td>42</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View District"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit District"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete District"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Alappuzha</td>
+                                    <td>ALP</td>
+                                    <td>Alappuzha</td>
+                                    <td>2,127,789</td>
+                                    <td>49</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View District"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit District"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete District"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Kottayam</td>
+                                    <td>KTM</td>
+                                    <td>Kottayam</td>
+                                    <td>1,974,551</td>
+                                    <td>53</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View District"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit District"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete District"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Toggle dropdowns
+        document.getElementById('notifications-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('notifications-menu').classList.toggle('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        document.getElementById('profile-dropdown').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('profile-menu').classList.toggle('show');
+            document.getElementById('notifications-menu').classList.remove('show');
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('notifications-menu').classList.remove('show');
+            document.getElementById('profile-menu').classList.remove('show');
+        });
+        
+        // Form submission
+        document.getElementById('district-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the district data
+            alert('District added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

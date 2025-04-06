@@ -1,0 +1,50 @@
+{% extends 'Admin/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>E-mail</td>
+                <td>Contact</td>
+                <td>Address</td>
+                <td>Proof</td>
+                <td>District</td>
+                <td>Action</td>
+            </tr>
+            {% for i in muncipality %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.mun_name}}</td>
+                <td>{{i.mun_email}}</td>
+                <td>{{i.mun_contact}}</td>
+                <td>{{i.mun_address}}</td>
+                <td><a href="{{i.mun_proof}}">View Proof</a></td>
+                <td>{{i.district.district_name}}</td>
+                <td>
+                    {% if i.mun_status == 1 %}
+                    <a href="{% url 'Admin:munreject' i.mun_id %}">Reject</a>
+                    {% elif i.mun_status == 2 %}
+                    <a href="{% url 'Admin:munaccept' i.mun_id %}">Accept</a>
+                    {% else %}
+                    <a href="{% url 'Admin:munaccept' i.mun_id %}">Accept</a>
+                    <a href="{% url 'Admin:munreject' i.mun_id %}">Reject</a>
+
+                    {% endif %}
+                    </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

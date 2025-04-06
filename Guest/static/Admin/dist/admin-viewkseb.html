@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View KSEB - Civic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar - abbreviated for brevity -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-bolt"></i> <span>Civic Admin</span></h2>
+            </div>
+            <div class="sidebar-menu">
+                <!-- Sidebar menu items -->
+                <div class="menu-category">
+                    <div class="menu-category-title">Department Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <a href="admin-viewmuncipality.html">
+                                <i class="fas fa-building"></i>
+                                <span>View Municipality</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewkseb.html" class="active">
+                                <i class="fas fa-plug"></i>
+                                <span>View KSEB</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewpwd.html">
+                                <i class="fas fa-hard-hat"></i>
+                                <span>View PWD</span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="admin-viewmvd.html">
+                                <i class="fas fa-truck"></i>
+                                <span>View MVD</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Other menu categories -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <!-- Header - abbreviated for brevity -->
+            <header class="header">
+                <button class="toggle-sidebar" id="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-right">
+                    <!-- Header content -->
+                </div>
+            </header>
+
+            <!-- KSEB Content -->
+            <div class="dashboard-content">
+                <h1 class="page-title">KSEB Management</h1>
+                
+                <!-- KSEB Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-primary">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87</h3>
+                            <p>KSEB Offices</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-success">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,245</h3>
+                            <p>Staff Members</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-warning">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>328</h3>
+                            <p>Active Complaints</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-danger">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>42</h3>
+                            <p>Urgent Issues</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add KSEB Office Form -->
+                <div class="form-container">
+                    <div class="form-title">Add New KSEB Office</div>
+                    <form id="kseb-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="office-name">Office Name</label>
+                                <input type="text" id="office-name" class="form-control" placeholder="Enter office name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">District</label>
+                                <select id="district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                    <option value="1">Thiruvananthapuram</option>
+                                    <option value="2">Kollam</option>
+                                    <option value="3">Pathanamthitta</option>
+                                    <option value="4">Alappuzha</option>
+                                    <option value="5">Kottayam</option>
+                                    <!-- Other districts -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="office-type">Office Type</label>
+                                <select id="office-type" class="form-control" required>
+                                    <option value="">Select Type</option>
+                                    <option value="section">Section Office</option>
+                                    <option value="division">Division Office</option>
+                                    <option value="circle">Circle Office</option>
+                                    <option value="regional">Regional Office</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="jurisdiction">Jurisdiction Area</label>
+                                <input type="text" id="jurisdiction" class="form-control" placeholder="Enter jurisdiction area">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="office-contact">Contact Number</label>
+                                <input type="tel" id="office-contact" class="form-control" placeholder="Enter contact number">
+                            </div>
+                            <div class="form-group">
+                                <label for="office-email">Email</label>
+                                <input type="email" id="office-email" class="form-control" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="office-address">Address</label>
+                            <textarea id="office-address" class="form-control" rows="3" placeholder="Enter address"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Add KSEB Office</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- KSEB Offices Table -->
+                <div class="data-table-container">
+                    <div class="data-table-header">
+                        <h3>KSEB Offices List</h3>
+                        <div class="data-table-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Office Name</th>
+                                    <th>District</th>
+                                    <th>Type</th>
+                                    <th>Contact</th>
+                                    <th>Active Complaints</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Thiruvananthapuram Circle Office</td>
+                                    <td>Thiruvananthapuram</td>
+                                    <td>Circle Office</td>
+                                    <td>0471-2555544</td>
+                                    <td>42</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Office"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Office"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Office"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Kochi Division Office</td>
+                                    <td>Ernakulam</td>
+                                    <td>Division Office</td>
+                                    <td>0484-2345678</td>
+                                    <td>38</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Office"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Office"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Office"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Kozhikode Section Office</td>
+                                    <td>Kozhikode</td>
+                                    <td>Section Office</td>
+                                    <td>0495-2765432</td>
+                                    <td>27</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Office"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Office"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Office"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Thrissur Regional Office</td>
+                                    <td>Thrissur</td>
+                                    <td>Regional Office</td>
+                                    <td>0487-2445566</td>
+                                    <td>31</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Office"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Office"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Office"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Kollam Division Office</td>
+                                    <td>Kollam</td>
+                                    <td>Division Office</td>
+                                    <td>0474-2768899</td>
+                                    <td>24</td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="action-view" title="View Office"><i class="fas fa-eye"></i></button>
+                                            <button class="action-edit" title="Edit Office"><i class="fas fa-edit"></i></button>
+                                            <button class="action-delete" title="Delete Office"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <ul class="pagination-list">
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+                            <li class="pagination-item"><a href="#" class="active">1</a></li>
+                            <li class="pagination-item"><a href="#">2</a></li>
+                            <li class="pagination-item"><a href="#">3</a></li>
+                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('toggle-sidebar').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('expanded');
+            document.getElementById('main-content').classList.toggle('expanded');
+        });
+        
+        // Form submission
+        document.getElementById('kseb-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real app, you would save the KSEB office data
+            alert('KSEB Office added successfully!');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

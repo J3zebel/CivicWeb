@@ -1,0 +1,112 @@
+{% extends 'Muncipality/Head.html' %}
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muncipality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+    
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+    
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+    
+        table th {
+            background: #0c65af;
+            color: white;
+        }
+    
+        input[type="file"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        input[type="submit"] {
+            background: #0c65af;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        input[type="submit"]:hover {
+            background: #094f8a;
+        }
+    
+        img {
+            border-radius: 8px;
+        }
+    </style>
+    
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <td>content</td>
+                <td><textarea name="txt_content" id=""></textarea></td>
+            </tr>
+            <tr>
+                <td>File</td>
+                <td><input type="file" name="file_photo" id=""></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="submit"></td>
+                
+            </tr>
+        </table>
+    </form>
+    <table>
+        <tr>
+            <td>SNO</td>
+            <td>content</td>
+            <td>File</td>
+            <td>Action</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.post_details}}</td>
+            <td><img src="{{i.post_file}}" width="150" height="150" alt=""></td>
+            <td>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

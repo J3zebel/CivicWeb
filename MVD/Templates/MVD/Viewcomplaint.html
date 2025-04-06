@@ -1,0 +1,80 @@
+{% extends 'MVD/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVD Portal - View Complaints</title>
+    <!-- Add custom CSS -->
+    <style>
+        .complaint-container {
+            padding: 20px;
+        }
+        .complaint-container h2 {
+            text-align: left; /* Left-align the heading */
+            margin-bottom: 20px; /* Add spacing below the heading */
+        }
+        .complaint-item {
+            background-color: #e6f0fa; /* Light blue background */
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .complaint-details {
+            text-align: left; /* Left-align all content */
+            flex-grow: 1;
+        }
+        .complaint-details p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .action-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+        .action-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Complaints Section -->
+    <div class="complaint-container">
+        <h2>View Complaints</h2>
+        {% for i in complaint %}
+        <div class="complaint-item">
+            <div class="complaint-details">
+                <p><strong>Complaint id:</strong> #{{ forloop.counter }}</strong></p>
+                <p><strong>Username:</strong> {{ i.user.user_name }}</p>
+                <p><strong>Contact:</strong> {{ i.user.user_contact }}</p>
+                <p><strong>Photo:</strong> <a href="{{ i.complaint_photo }}">View File</a></p>
+                <p><strong>Content:</strong> {{ i.complaint_content }}</p>
+            </div>
+            <div>
+                {% if i.complaint_status == 0 %}
+                <a href="{% url 'MVD:updatests' i.id 1 %}" class="action-btn">Accept</a>
+                {% elif i.complaint_status == 1 %}
+                <a href="{% url 'MVD:updatests' i.id 2 %}" class="action-btn">Investigating</a>
+                {% elif i.complaint_status == 2 %}
+                <a href="{% url 'MVD:updatests' i.id 3 %}" class="action-btn">Resolving</a>
+                {% elif i.complaint_status == 3 %}
+                <a href="{% url 'MVD:updatests' i.id 4 %}" class="action-btn">Solved</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+{% endblock %}

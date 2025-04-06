@@ -1,0 +1,90 @@
+{% extends 'KSEB/Head.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSEB Portal - Service Requests</title>
+    <!-- Add custom CSS -->
+    <style>
+        .request-container {
+            padding: 20px;
+        }
+        .request-container h2 {
+            text-align: left; /* Left-align the heading */
+            margin-bottom: 20px;
+        }
+        .request-item {
+            background-color: #ffffff; /* White background as in the image */
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Light border for separation */
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .request-details {
+            text-align: left; /* Left-align all content */
+            flex-grow: 1;
+        }
+        .request-details p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .request-details img {
+            max-width: 160px;
+            max-height: 150px;
+            object-fit: cover; /* Ensure image scales properly */
+        }
+        .action-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+        .action-btn:hover {
+            background-color: #0056b3;
+        }
+        .status-approved { color: #28a745; } /* Green for Approved */
+        .status-pending { color: #ffc107; } /* Yellow for Pending */
+        .status-rejected { color: #dc3545; } /* Red for Rejected */
+    </style>
+</head>
+
+<body>
+    <!-- Service Requests Section -->
+    <div class="request-container">
+        <h2>Service Requests</h2>
+        {% for i in reply %}
+        <div class="request-item">
+            <div class="request-details">
+                <p><strong>request id:</strong> #{{ forloop.counter }}</strong></p>
+                <p><strong>Username:</strong> {{ i.user.user_name }}</p>
+                <p><strong>Contact:</strong> {{ i.user.user_contact }}</p>
+                <p><strong>Photo:</strong> <a href="{{ i.request_photo }}">View File</a></p>
+                <p><strong>Content:</strong> {{ i.request_content }}</p>
+                
+            </div>
+            <div>
+                {% if i.request_status == 0 %}
+                <a href="{% url 'KSEB:requpdate' i.id 1 %}" class="action-btn">Accept</a>
+                {% elif i.request_status == 1 %}
+                <a href="{% url 'KSEB:requpdate' i.id 2 %}" class="action-btn">Investigating</a>
+                {% elif i.request_status == 2 %}
+                <a href="{% url 'KSEB:requpdate' i.id 3 %}" class="action-btn">Resolving</a>
+                {% elif i.request_status == 3 %}
+                <a href="{% url 'KSEB:requpdate' i.id 4 %}" class="action-btn">Solved</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
+{% endblock %}

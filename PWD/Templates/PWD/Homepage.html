@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWD Portal</title>
+    <link rel="stylesheet" href="{% static 'KSEB/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero {
+    background-image: url("{% static 'KSEB/images/pwd.avif' %}");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    background-position: bottom;
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'KSEB/images/pwd.jpg' %}" width="250" height="120" alt="Pwd Logo" class="Pwd-logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'PWD:homepage' %}">Home</a></li>
+                    <li><a href="{% url 'PWD:myprofile' %}">Profile</a></li>
+                    <li><a href="{% url 'PWD:viewcomplaint' %}">View Complaints</a></li>
+                    <li><a href="{% url 'PWD:publicpost' %}">Add Post</a></li>
+                    <li><a href="{% url 'PWD:logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Welcome to Your PWD</h2>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <img src="{% static 'KSEB/images/road-construction.jpg' %}" alt="Road Construction">
+                    <h3>Road Construction</h3>
+                    <p>Building and maintaining quality roads for safe travel.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/building-projects.webp' %}" alt="Building Projects">
+                    <h3>Building Projects</h3>
+                    <p>Overseeing construction of public buildings and facilities.</p>
+                </div>
+                <div class="card">
+                    <img src="{% static 'KSEB/images/water-supply.avif' %}" alt="Water Supply">
+                    <h3>Water Supply</h3>
+                    <p>Ensuring reliable water infrastructure for communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="news">
+        <div class="container">
+            <h2>Latest News</h2>
+            <div class="news-cards">
+                <div class="card">
+                    <h3>New Highway Project</h3>
+                    <p>PWD has started construction on a new highway to improve connectivity.</p>
+                </div>
+                <div class="card">
+                    <h3>Bridge Repair Update</h3>
+                    <p>Check the latest progress on bridge maintenance in your area.</p>
+                </div>
+                <div class="card">
+                    <h3>Flood Prevention Initiative</h3>
+                    <p>New drainage systems being installed to mitigate flooding risks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="support">
+        <div class="container">
+            <h2>Customer Support</h2>
+            <div class="support-info">
+                <div class="contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@pwd.gov.in</p>
+                    <p>Phone: +91 987 654 3210</p>
+                </div>
+                <div class="faqs">
+                    <h3>FAQs</h3>
+                    <p>Find answers to common questions about projects, timelines, and complaints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>PWD Office</p>
+                    <p>Phone: +91 654 123 3820</p>
+                    <p>Email: info@pwd.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 PWD Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'KSEB/scripts.js' %}"></script>
+</body>
+</html> 

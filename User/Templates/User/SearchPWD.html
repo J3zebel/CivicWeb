@@ -1,0 +1,60 @@
+{% extends 'User/Head.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <td>District</td>
+                <td><select name="sel_district" id="sel_district" onchange="searchPWD()"> <option value="">--Select--</option>
+                    {% for i in district %}
+                    <option value="{{i.id}}">{{i.district_name}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            
+        </table>
+        <table border="1" id="result">
+            <tr>
+                <td>Name</td>
+                <td>Contact</td>
+                <td>Email</td>
+                <td>Address</td>
+                <td>Action</td>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.pwd_name}}</td>
+                <td> {{i.pwd_contact}}</td>
+                <td>{{i.pwd_email}}</td>
+                <td>{{i.pwd_address}}</td>
+                <td ><a href="{% url 'User:pwdcomplaint' i.pwd_id %}">Complaint</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function searchPWD() {
+        var district = document.getElementById("sel_district").value
+        
+        $.ajax({
+            url: "{% url 'User:ajaxsearchpwd' %}",
+            data: { district: district, }, 
+            success: function (data) {
+                $("#result").html(data);
+               
+            },
+        });
+    }
+</script>
+{% endblock %}

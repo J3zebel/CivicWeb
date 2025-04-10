@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from Admin.models import *
 from Guest.models import *
+from User.models import *
 from django.conf import settings
 from supabase import create_client
 
@@ -342,9 +343,22 @@ def userremove(request,id):
 
 
 def homepage(request):
-    return render(request, "Admin/Homepage.html")
-  
+    # Counts for dashboard
+    admin=tbl_admin.objects.all()
+    usercount = tbl_user.objects.all().count()
+    solvedcomplaint = tbl_complaint.objects.filter(complaint_status=5).count()
+    pendingcomplaint = tbl_complaint.objects.filter(complaint_status=0).count()
+    recent_complaints = tbl_complaint.objects.all().order_by('-complaint_date')[:5]
 
+
+    context = {
+        'admin':request.session['aname'],
+        'user': usercount,
+        'solvedcomplaint': solvedcomplaint,
+        'pendingcomplaint': pendingcomplaint,
+        'recent_complaints': recent_complaints,
+    }
+    return render(request, "Admin/Homepage.html", context)
 
 def ksebcomptype(request):
     dis=tbl_ksebcomplainttype.objects.all()
@@ -405,7 +419,7 @@ def muncomptype(request):
     else:
         return render(request,'Admin/MuncipalityComplaintType.html',{'complaint':dis})
     
-def delmvdcomp(request,id):
+def delmuncomp(request,id):
     tbl_muncipalitycomplainttype.objects.get(id=id).delete()
     return redirect("Admin:muncomptype")
 
@@ -422,7 +436,7 @@ def ksebreqtype(request):
     else:
         return render(request,'Admin/KsebRequestType.html',{'request':dis})
     
-def delksebcomp(request,id):
+def delksebreq(request,id):
     tbl_ksebrequesttype.objects.get(id=id).delete()
     return redirect("Admin:ksebreqtype")
 
@@ -438,7 +452,7 @@ def mvdreqtype(request):
     else:
         return render(request,'Admin/MVDRequestType.html',{'request':dis})
     
-def delmvdcomp(request,id):
+def delmvdreq(request,id):
     tbl_mvdrequesttype.objects.get(id=id).delete()
     return redirect("Admin:mvdreqtype")
 

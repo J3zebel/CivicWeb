@@ -1,50 +1,96 @@
 {% extends 'Admin/Head.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <table border="1">
-            <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>E-mail</td>
-                <td>Contact</td>
-                <td>Address</td>
-                <td>Proof</td>
-                <td>District</td>
-                <td>Action</td>
-            </tr>
-            {% for i in muncipality %}
-            <tr>
-                <td>{{forloop.counter}}</td>
-                <td>{{i.mun_name}}</td>
-                <td>{{i.mun_email}}</td>
-                <td>{{i.mun_contact}}</td>
-                <td>{{i.mun_address}}</td>
-                <td><a href="{{i.mun_proof}}">View Proof</a></td>
-                <td>{{i.district.district_name}}</td>
-                <td>
-                    {% if i.mun_status == 1 %}
-                    <a href="{% url 'Admin:munreject' i.mun_id %}">Reject</a>
-                    {% elif i.mun_status == 2 %}
-                    <a href="{% url 'Admin:munaccept' i.mun_id %}">Accept</a>
-                    {% else %}
-                    <a href="{% url 'Admin:munaccept' i.mun_id %}">Accept</a>
-                    <a href="{% url 'Admin:munreject' i.mun_id %}">Reject</a>
 
-                    {% endif %}
-                    </td>
-            </tr>
-            {% endfor %}
-        </table>
-    </form>
-</body>
-</html>
+        <!-- Municipality Management Content -->
+        <div class="dashboard-content">
+            <h1 class="page-title">Municipality Management</h1>
+
+            <!-- Municipalities Table -->
+            <div class="data-table-container">
+                <div class="data-table-header">
+                    <h3>Municipalities List</h3>
+                    <div class="data-table-actions">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>E-mail</th>
+                                <th>Contact</th>
+                                <th>Address</th>
+                                <th>District</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in muncipality %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ i.mun_name }}</td>
+                                <td>{{ i.mun_email }}</td>
+                                <td>{{ i.mun_contact }}</td>
+                                <td>{{ i.mun_address }}</td>
+                                <td>{{ i.district.district_name }}</td>
+                                <td>
+                                    <div class="actions">
+                                        <a href="{{ i.mun_proof }}" target="_blank" class="action-view" title="View Proof">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        {% if i.mun_status == 1 %}
+                                            <a href="{% url 'Admin:munreject' i.mun_id %}" class="action-delete" title="Reject Municipality"
+                                               onclick="return confirm('Are you sure you want to reject {{ i.mun_name }}?');">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        {% elif i.mun_status == 2 %}
+                                            <a href="{% url 'Admin:munaccept' i.mun_id %}" class="action-edit" title="Accept Municipality"
+                                               onclick="return confirm('Are you sure you want to accept {{ i.mun_name }}?');">
+                                                <i class="fas fa-check"></i>
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'Admin:munaccept' i.mun_id %}" class="action-edit" title="Accept Municipality"
+                                               onclick="return confirm('Are you sure you want to accept {{ i.mun_name }}?');">
+                                                <i class="fas fa-check"></i>
+                                            </a>
+                                            <a href="{% url 'Admin:munreject' i.mun_id %}" class="action-delete" title="Reject Municipality"
+                                               onclick="return confirm('Are you sure you want to reject {{ i.mun_name }}?');">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7">No municipality records found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Optional CSS for Address Column -->
+<style>
+    .data-table td:nth-child(5) { /* Address column */
+        max-width: 200px; /* Adjust as needed */
+        white-space: normal; /* Allow wrapping if address is long */
+        word-wrap: break-word;
+    }
+    .data-table td:nth-child(2), /* Name */
+    .data-table td:nth-child(3), /* E-mail */
+    .data-table td:nth-child(4) { /* Contact */
+        white-space: nowrap; /* Keep these on one line */
+    }
+</style>
 {% endblock %}

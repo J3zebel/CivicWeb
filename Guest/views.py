@@ -98,6 +98,7 @@ def login(request):
             try:
                 user=tbl_user.objects.get(user_id=user_id)
                 request.session['uid']=user.user_id
+
                 return redirect("User:homepage")
                 
             except tbl_user.DoesNotExist:
@@ -128,6 +129,7 @@ def login(request):
                                 try:
                                     admin=tbl_admin.objects.get(admin_id=user_id)
                                     request.session['aid']=admin.admin_id
+                                    request.session['aname']=admin.admin_name
                                     return redirect("Admin:homepage")
                                 except tbl_admin.DoesNotExist:
                                     return render(request,"Guest/Login.html",{"error":"User DoesNot Exist"})

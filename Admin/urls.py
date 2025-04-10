@@ -41,13 +41,16 @@ urlpatterns = [
     path('ksebcomptype/',views.ksebcomptype,name="ksebcomptype"),
     path('delksebcomp/<int:id>',views.delksebcomp,name="delksebcomp"),
     path('mvdcomptype/',views.mvdcomptype,name="mvdcomptype"),
+    path('delmvdcomp/<int:id>',views.delmvdcomp,name="delmvdcomp"),
     path('pwdcomptype/',views.pwdcomptype,name="pwdcomptype"),
+    path('delpwdcomp/<int:id>',views.delpwdcomp,name="delpwdcomp"),
     path('muncomptype/',views.muncomptype,name="muncomptype"),
-
+    path('delmuncomp/<int:id>',views.delmuncomp,name="delmuncomp"),
 
     path('ksebreqtype/',views.ksebreqtype,name="ksebreqtype"),
+    path('delksebreq/<int:id>',views.delksebreq,name="delksebreq"),
     path('mvdreqtype/',views.mvdreqtype,name="mvdreqtype"),
-    
+    path('delmvdreq/<int:id>',views.delmvdreq,name="delmvdreq"),
     path('logout/',views.logout,name="logout")
 
 

@@ -774,7 +774,7 @@
                     <div class="menu-category-title">Dashboard</div>
                     <ul class="menu-items">
                         <li class="menu-item">
-                            <a href="#" class="active">
+                            <a href="{% url 'Admin:homepage'  %}" class="active">
                                 <i class="fas fa-tachometer-alt"></i>
                                 <span>Overview</span>
                             </a>
@@ -836,13 +836,13 @@
                         <li class="menu-item">
                             <a href="{%  url 'Admin:ksebreqtype' %}" onclick="loadContent('ksebrequesttype')">
                                 <i class="fas fa-bolt"></i>
-                                <span>KSEB Request</span>
+                                <span>KSEB Requests</span>
                             </a>
                         </li>
                         <li class="menu-item">
                             <a href="{%  url 'Admin:mvdreqtype' %}" onclick="loadContent('mvdrequesttype')">
                                 <i class="fas fa-bolt"></i>
-                                <span>MVD Complaints</span>
+                                <span>MVD Requests</span>
                             </a>
                         </li>
                     </ul>
@@ -887,18 +887,6 @@
                                 <span>Users</span>
                             </a>
                         </li>
-                        <li class="menu-item">
-                            <a href="{%  url 'User:publicpost' %}" onclick="loadContent('publicpost')">
-                                <i class="fas fa-clipboard"></i>
-                                <span>Public Posts</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="{%  url 'User:publiccomplaint' %}" onclick="loadContent('publiccomplaints')">
-                                <i class="fas fa-hands-helping"></i>
-                                <span>Public Complaints</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -906,19 +894,7 @@
                     <div class="menu-category-title">Settings</div>
                     <ul class="menu-items">
                         <li class="menu-item">
-                            <a href="#">
-                                <i class="fas fa-cog"></i>
-                                <span>General Settings</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#">
-                                <i class="fas fa-user-shield"></i>
-                                <span>Admin Profile</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="login.html">
+                            <a href="{%  url 'Admin:logout' %}">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
@@ -936,43 +912,16 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="header-right">
-                    <div class="dropdown">
-                        <button class="dropdown-toggle" id="notifications-dropdown">
-                            <i class="fas fa-bell"></i>
-                        </button>
-                        <div class="dropdown-menu" id="notifications-menu">
-                            <a href="#" class="dropdown-item">
-                                <strong>New complaint registered</strong>
-                                <p>A new KSEB complaint has been registered</p>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <strong>User registration</strong>
-                                <p>5 new users registered today</p>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <strong>System update</strong>
-                                <p>System maintenance scheduled for tonight</p>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">View all notifications</a>
-                        </div>
-                    </div>
+                    
                     <div class="dropdown">
                         <button class="dropdown-toggle" id="profile-dropdown">
-                            <img src="/placeholder.svg?height=36&width=36" alt="Admin">
-                            <span>Admin User</span>
+                            <!-- <img src="/placeholder.svg?height=36&width=36" alt="Admin"> -->
+                            <span>{{admin}}</span>
                         </button>
                         <div class="dropdown-menu" id="profile-menu">
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-user"></i> Profile
-                            </a>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
+                           
                             <div class="dropdown-divider"></div>
-                            <a href="login.html" class="dropdown-item">
+                            <a href="{% url 'Admin:logout' %}" class="dropdown-item">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -991,7 +940,7 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>2,845</h3>
+                            <h3>{{user}}</h3>
                             <p>Total Users</p>
                         </div>
                     </div>
@@ -1000,7 +949,7 @@
                             <i class="fas fa-check-circle"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>1,257</h3>
+                            <h3>{{solvedcomplaint}}</h3>
                             <p>Resolved Complaints</p>
                         </div>
                     </div>
@@ -1009,17 +958,8 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="stat-info">
-                            <h3>328</h3>
+                            <h3>{{pendingcomplaint}}</h3>
                             <p>Pending Complaints</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon icon-danger">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="stat-info">
-                            <h3>156</h3>
-                            <p>Urgent Requests</p>
                         </div>
                     </div>
                 </div>
@@ -1035,23 +975,23 @@
                         </div>
                         <div class="widget-body">
                             <div class="quick-actions">
-                                <a href="#" class="quick-action" onclick="loadContent('district')">
+                                <a href="{% url 'Admin:district'  %}" class="quick-action" onclick="loadContent('district')">
                                     <i class="fas fa-map-marker-alt"></i>
                                     <span>Add District</span>
                                 </a>
-                                <a href="#" class="quick-action" onclick="loadContent('ksebcomplainttype')">
+                                <a href="{%  url 'Admin:ksebcomptype' %}" class="quick-action" onclick="loadContent('ksebcomplainttype')">
                                     <i class="fas fa-bolt"></i>
                                     <span>KSEB Complaints</span>
                                 </a>
-                                <a href="#" class="quick-action" onclick="loadContent('users')">
+                                <a href="{%  url 'Admin:viewuser' %}" class="quick-action" onclick="loadContent('users')">
                                     <i class="fas fa-user-plus"></i>
-                                    <span>Add User</span>
+                                    <span>View User</span>
                                 </a>
                                 <a href="#" class="quick-action" onclick="loadContent('publicpost')">
                                     <i class="fas fa-clipboard-list"></i>
                                     <span>View Posts</span>
                                 </a>
-                                <a href="#" class="quick-action" onclick="loadContent('viewmuncipality')">
+                                <a href="{%  url 'Admin:viewmunciplity' %}" class="quick-action" onclick="loadContent('viewmuncipality')">
                                     <i class="fas fa-building"></i>
                                     <span>Municipality</span>
                                 </a>
@@ -1065,53 +1005,31 @@
 
                     <div class="widget">
                         <div class="widget-header">
-                            <h3>Recent Activity</h3>
+                            <h3>Last Logged Users</h3>
                             <button class="widget-action">
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                         </div>
                         <div class="widget-body">
                             <ul class="recent-activity">
+                                {% for user in last_logged_users %}
                                 <li class="activity-item">
                                     <div class="activity-icon icon-primary">
-                                        <i class="fas fa-user-plus"></i>
+                                        <i class="fas fa-user"></i>
                                     </div>
                                     <div class="activity-details">
-                                        <h4>New User Registration</h4>
-                                        <p>Rahul Sharma registered a new account</p>
+                                        <h4>User Login</h4>
+                                        <p>{{ user.user_name }} logged in</p>
                                     </div>
-                                    <span class="activity-time">2 hours ago</span>
+                                    <span class="activity-time">{{ user.time_display }}</span>
                                 </li>
+                                {% empty %}
                                 <li class="activity-item">
-                                    <div class="activity-icon icon-danger">
-                                        <i class="fas fa-exclamation-circle"></i>
-                                    </div>
                                     <div class="activity-details">
-                                        <h4>New Complaint Filed</h4>
-                                        <p>Power outage reported in Kochi Central</p>
+                                        <p>No recent logins found.</p>
                                     </div>
-                                    <span class="activity-time">5 hours ago</span>
                                 </li>
-                                <li class="activity-item">
-                                    <div class="activity-icon icon-success">
-                                        <i class="fas fa-check-circle"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h4>Complaint Resolved</h4>
-                                        <p>Road repair completed in Trivandrum</p>
-                                    </div>
-                                    <span class="activity-time">Yesterday</span>
-                                </li>
-                                <li class="activity-item">
-                                    <div class="activity-icon icon-warning">
-                                        <i class="fas fa-comment"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h4>New Comment</h4>
-                                        <p>PWD officer commented on complaint #2354</p>
-                                    </div>
-                                    <span class="activity-time">Yesterday</span>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -1122,9 +1040,6 @@
                     <div class="data-table-header">
                         <h3>Recent Complaints</h3>
                         <div class="data-table-actions">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-download"></i> Export
-                            </button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -1134,99 +1049,55 @@
                                     <th>ID</th>
                                     <th>Type</th>
                                     <th>Department</th>
-                                    <th>Location</th>
+                                    <!-- <th>Location</th> -->
                                     <th>Date</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for complaint in recent_complaints %}
                                 <tr>
-                                    <td>#2367</td>
-                                    <td>Power Outage</td>
-                                    <td>KSEB</td>
-                                    <td>Kochi Central</td>
-                                    <td>2023-03-22</td>
-                                    <td><span class="status status-pending">Pending</span></td>
+                                    <td>#{{ complaint.id }}</td>
                                     <td>
-                                        <div class="actions">
-                                            <button class="action-view"><i class="fas fa-eye"></i></button>
-                                            <button class="action-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="action-delete"><i class="fas fa-trash"></i></button>
-                                        </div>
+                                        {% if complaint.ksebcomplainttype %}
+                                            {{ complaint.ksebcomplainttype.complaint_type }}
+                                        {% elif complaint.mvdcomplainttype %}
+                                            {{ complaint.mvdcomplainttype.complaint_type }}
+                                        {% elif complaint.pwdcomplainttype %}
+                                            {{ complaint.pwdcomplainttype.complaint_type }}
+                                        {% elif complaint.muncomplainttype %}
+                                            {{ complaint.muncomplainttype.complaint_type }}
+                                        {% else %}
+                                            Unknown Type
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if complaint.kseb %}KSEB
+                                        {% elif complaint.mvd %}MVD
+                                        {% elif complaint.pwd %}PWD
+                                        {% elif complaint.muncipality %}Municipality
+                                        {% else %}Unknown
+                                        {% endif %}
+                                    </td>
+                                    <!-- <td>{{ complaint.user.location|default:"Not Specified" }}</td> Assuming tbl_user has a location field -->
+                                    <td>{{ complaint.complaint_date|date:"Y-m-d" }}</td>
+                                    <td>
+                                        {% if complaint.complaint_status == 0 %}
+                                            <span class="status status-pending">Pending</span>
+                                        {% elif complaint.complaint_status == 5 %}
+                                            <span class="status status-inactive">Resolved</span>
+                                        {% else %}
+                                            <span class="status status-active">In Progress</span>
+                                        {% endif %}
                                     </td>
                                 </tr>
+                                {% empty %}
                                 <tr>
-                                    <td>#2366</td>
-                                    <td>Road Damage</td>
-                                    <td>PWD</td>
-                                    <td>Trivandrum East</td>
-                                    <td>2023-03-21</td>
-                                    <td><span class="status status-active">In Progress</span></td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="action-view"><i class="fas fa-eye"></i></button>
-                                            <button class="action-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="action-delete"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
+                                    <td colspan="7">No recent complaints found.</td>
                                 </tr>
-                                <tr>
-                                    <td>#2365</td>
-                                    <td>Waste Collection</td>
-                                    <td>Municipality</td>
-                                    <td>Kozhikode North</td>
-                                    <td>2023-03-20</td>
-                                    <td><span class="status status-active">In Progress</span></td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="action-view"><i class="fas fa-eye"></i></button>
-                                            <button class="action-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="action-delete"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#2364</td>
-                                    <td>Traffic Signal</td>
-                                    <td>MVD</td>
-                                    <td>Thrissur Central</td>
-                                    <td>2023-03-19</td>
-                                    <td><span class="status status-inactive">Resolved</span></td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="action-view"><i class="fas fa-eye"></i></button>
-                                            <button class="action-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="action-delete"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#2363</td>
-                                    <td>Transformer Issue</td>
-                                    <td>KSEB</td>
-                                    <td>Palakkad West</td>
-                                    <td>2023-03-18</td>
-                                    <td><span class="status status-inactive">Resolved</span></td>
-                                    <td>
-                                        <div class="actions">
-                                            <button class="action-view"><i class="fas fa-eye"></i></button>
-                                            <button class="action-edit"><i class="fas fa-edit"></i></button>
-                                            <button class="action-delete"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
-                    </div>
-                    <div class="pagination">
-                        <ul class="pagination-list">
-                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
-                            <li class="pagination-item"><a href="#" class="active">1</a></li>
-                            <li class="pagination-item"><a href="#">2</a></li>
-                            <li class="pagination-item"><a href="#">3</a></li>
-                            <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

@@ -51,8 +51,8 @@ urlpatterns = [
     path('delksebreq/<int:id>',views.delksebreq,name="delksebreq"),
     path('mvdreqtype/',views.mvdreqtype,name="mvdreqtype"),
     path('delmvdreq/<int:id>',views.delmvdreq,name="delmvdreq"),
-    path('logout/',views.logout,name="logout")
-
+    path('logout/',views.logout,name="logout"),
+    
 
 
 ]

@@ -987,50 +987,19 @@
                                     <i class="fas fa-user-plus"></i>
                                     <span>View User</span>
                                 </a>
-                                <a href="#" class="quick-action" onclick="loadContent('publicpost')">
+                                <a href="{%  url 'Admin:viewpwd' %}" class="quick-action" onclick="loadContent('viewpwd')">
                                     <i class="fas fa-clipboard-list"></i>
-                                    <span>View Posts</span>
+                                    <span>View PWD</span>
                                 </a>
                                 <a href="{%  url 'Admin:viewmunciplity' %}" class="quick-action" onclick="loadContent('viewmuncipality')">
                                     <i class="fas fa-building"></i>
                                     <span>Municipality</span>
                                 </a>
-                                <a href="#" class="quick-action" onclick="loadContent('publicrequests')">
+                                <a href="{%  url 'Admin:mvdcomptype' %}" class="quick-action" onclick="loadContent('mvdcomplainttype')">
                                     <i class="fas fa-hands-helping"></i>
-                                    <span>Requests</span>
+                                    <span>MVD Complaints</span>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="widget">
-                        <div class="widget-header">
-                            <h3>Last Logged Users</h3>
-                            <button class="widget-action">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                        </div>
-                        <div class="widget-body">
-                            <ul class="recent-activity">
-                                {% for user in last_logged_users %}
-                                <li class="activity-item">
-                                    <div class="activity-icon icon-primary">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h4>User Login</h4>
-                                        <p>{{ user.user_name }} logged in</p>
-                                    </div>
-                                    <span class="activity-time">{{ user.time_display }}</span>
-                                </li>
-                                {% empty %}
-                                <li class="activity-item">
-                                    <div class="activity-details">
-                                        <p>No recent logins found.</p>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                            </ul>
                         </div>
                     </div>
                 </div>

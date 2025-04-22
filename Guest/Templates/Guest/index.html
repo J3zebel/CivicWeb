@@ -4,310 +4,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civic Portal - Registration & Login</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Civic Portal - Government Service Registrations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Enhanced styles for the index page */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        
-        .header-logo {
-            font-size: 50px;
-            color: #0078d4;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .header-logo:hover {
-            transform: scale(1.1);
-        }
-        
-        .header h1 {
-            font-size: 36px;
-            color: #333;
-            margin: 0;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .header p {
-            font-size: 18px;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
+            background: linear-gradient(to bottom right, #f9fafb, #e0f2fe);
+            color: #1f2937;
             line-height: 1.5;
         }
-        
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
         }
-        
-        .card {
-            background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 5rem 2rem;
+            }
+        }
+
+        .header {
             text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 4rem;
+        }
+
+        .logo-container {
+            display: inline-flex;
             align-items: center;
-            justify-content: space-between;
-            height: 100%;
-            overflow: hidden;
+            justify-content: center;
+            width: 10rem; /* Circle size */
+            height: 10rem; /* Circle size */
+            background-color: transparent; /* Removed background */
+            color: #0284c7;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.1);
+        }
+
+        .logo {
+            width: 100%; /* Logo fills the circle */
+            height: 100%; /* Logo fills the circle */
+            object-fit: contain; /* Ensures logo maintains its aspect ratio */
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .title span {
+            color: #0284c7;
+        }
+
+        @media (min-width: 640px) {
+            .title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #4b5563;
+            max-width: 36rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        .cards-grid {
+            display: grid;
+            gap: 1.5rem;
+            justify-content: center; /* Center align */
+        }
+
+        @media (min-width: 640px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
             position: relative;
+            overflow: hidden;
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
         }
-        
+
+        @media (min-width: 640px) {
+            .card {
+                padding: 2rem;
+            }
+        }
+
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
         .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #0078d4;
-            width: 80px;
-            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f0f7ff;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
+            width: 4rem;
+            height: 4rem;
+            border-radius: 9999px;
+            margin: 0 auto 1.25rem;
+            color: #0284c7;
+            font-size: 1.75rem;
         }
-        
-        .card:hover .card-icon {
-            transform: rotate(360deg);
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
         }
-        
-        .card h3 {
-            font-size: 20px;
-            margin: 0 0 10px 0;
-            color: #333;
-            font-weight: 500;
+
+        .card-description {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
         }
-        
-        .card p {
-            font-size: 14px;
-            color: #666;
-            margin: 0 0 20px 0;
-            line-height: 1.6;
-        }
-        
+
         .card-button {
-            background-color: #0078d4;
-            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0.625rem 1rem;
+            background-color: #0284c7;
+            color: white;
             border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            font-size: 16px;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            margin-top: auto;
+            transition: all 0.2s ease;
         }
-        
+
         .card-button:hover {
-            background-color: #005a9e;
-            transform: scale(1.05);
+            background-color: #0369a1;
         }
-        
+
+        .card-button i {
+            transition: transform 0.2s ease;
+        }
+
+        .card-button:hover i {
+            transform: translateX(0.25rem);
+        }
+
         .login-card {
-            background-color: #0078d4;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(to bottom right, #0284c7, #1e40af);
+            color: white;
         }
-        
+
         .login-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transform: rotate(30deg);
-            pointer-events: none;
+            top: -5rem;
+            right: -5rem;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.1);
         }
-        
+
+        .login-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 6rem;
+            height: 6rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translate(-50%, 50%);
+        }
+
         .login-card .card-icon {
-            color: #0078d4;
-            background-color: #fff;
+            background-color: white;
+            color: #0284c7;
         }
-        
-        .login-card h3, .login-card p {
-            color: #fff;
+
+        .login-card .card-title,
+        .login-card .card-description {
+            color: white;
         }
-        
+
+        .login-card .card-description {
+            color: #bfdbfe;
+        }
+
         .login-card .card-button {
-            background-color: #fff;
-            color: #0078d4;
+            background-color: white;
+            color: #0284c7;
         }
-        
+
         .login-card .card-button:hover {
-            background-color: #f0f0f0;
-            transform: scale(1.05);
+            background-color: #f9fafb;
         }
-        
+
         .footer {
+            margin-top: 5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 14px;
+            font-size: 0.875rem;
+            color: #6b7280;
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 28px;
-            }
-            
-            .header p {
-                font-size: 16px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .card-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 36px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px 10px;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-            
-            .card-button {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-        }
+
+        .bg-sky-50 { background-color: #f0f9ff; }
+        .bg-emerald-50 { background-color: #ecfdf5; }
+        .bg-amber-50 { background-color: #fffbeb; }
+        .bg-purple-50 { background-color: #faf5ff; }
+        .bg-rose-50 { background-color: #fff1f2; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">
-                <img src="{% static 'Main/images/civic.png' %}" alt="Logo">
+            <div class="logo-container">
+                <img src="{% static 'Main/images/civic.png' %}" alt="Logo" class="logo">
             </div>
-            <h1>Welcome to Civic Portal</h1>
-            <p>Your one-stop solution for all government service registrations</p>
+            <h1 class="title">Welcome to <span>Civic Portal</span></h1>
+            <p class="subtitle">Your one-step solution for all government service registrations</p>
         </div>
-        
-        <div class="cards-container">
-            <div class="card" onclick="window.location.href='register.html'">
-                <div class="card-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <h3>User Registration</h3>
-                <p>Register as a new user to access all services on the portal</p>
-                <a href="{% url 'Guest:user' %}" class="card-button">Register Now</a>
-            </div>
-            
+
+        <div class="cards-grid">
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-car"></i>
-                </div>
-                <h3>MVD Registration</h3>
-                <p>Register with Motor Vehicles Department for vehicle-related services</p>
-                <a href="{% url 'Guest:mvd' %}" class="card-button">Register Now</a>
+                <div class="card-icon bg-sky-50"><i class="fas fa-user"></i></div>
+                <h3 class="card-title">User Registration</h3>
+                <p class="card-description">Register as a new user to access all services on the portal</p>
+                <a href="{% url 'Guest:user' %}" class="card-button">Register Now <i class="fas fa-chevron-right"></i></a>
             </div>
-            
+
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-road"></i>
-                </div>
-                <h3>PWD Registration</h3>
-                <p>Register with Public Works Department for infrastructure services</p>
-                <a href="{% url 'Guest:pwd' %}" class="card-button">Register Now</a>
+                <div class="card-icon bg-emerald-50"><i class="fas fa-car"></i></div>
+                <h3 class="card-title">MVD Registration</h3>
+                <p class="card-description">Register with Motor Vehicles Department for vehicle-related services</p>
+                <a href="{% url 'Guest:mvd' %}" class="card-button">Register Now <i class="fas fa-chevron-right"></i></a>
             </div>
-            
+
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h3>Municipality Registration</h3>
-                <p>Register with your local municipality for civic services</p>
-                <a href="{% url 'Guest:muncipality' %}" class="card-button">Register Now</a>
+                <div class="card-icon bg-amber-50"><i class="fas fa-road"></i></div>
+                <h3 class="card-title">PWD Registration</h3>
+                <p class="card-description">Register with Public Works Department for infrastructure services</p>
+                <a href="{% url 'Guest:pwd' %}" class="card-button">Register Now <i class="fas fa-chevron-right"></i></a>
             </div>
-            
+
             <div class="card">
-                <div class="card-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>KSEB Registration</h3>
-                <p>Register with Kerala State Electricity Board for electricity services</p>
-                <a href="{% url 'Guest:kseb' %}" class="card-button">Register Now</a>
+                <div class="card-icon bg-purple-50"><i class="fas fa-building"></i></div>
+                <h3 class="card-title">Municipality Registration</h3>
+                <p class="card-description">Register with your local municipality for civic services</p>
+                <a href="{% url 'Guest:muncipality' %}" class="card-button">Register Now <i class="fas fa-chevron-right"></i></a>
             </div>
-            
+
+            <div class="card">
+                <div class="card-icon bg-rose-50"><i class="fas fa-bolt"></i></div>
+                <h3 class="card-title">KSEB Registration</h3>
+                <p class="card-description">Register with Kerala State Electricity Board for electricity services</p>
+                <a href="{% url 'Guest:kseb' %}" class="card-button">Register Now <i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="card login-card">
-                <div class="card-icon">
-                    <i class="fas fa-sign-in-alt"></i>
-                </div>
-                <h3>Already Registered?</h3>
-                <p>Login to access your account and services</p>
-                <a href="{% url 'Guest:login' %}" class="card-button">Login Now</a>
+                <div class="card-icon"><i class="fas fa-sign-in-alt"></i></div>
+                <h3 class="card-title">Already Registered?</h3>
+                <p class="card-description">Login to access your account and services</p>
+                <a href="{% url 'Guest:login' %}" class="card-button">Login Now <i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
-        
+
         <div class="footer">
             <p>&copy; 2025 Civic Portal. All rights reserved.</p>
         </div>
     </div>
-    
-    <script>
-        // Add any JavaScript functionality here if needed
-        document.addEventListener('DOMContentLoaded', function() {
-            // You can add animations or other functionality here
-        });
-    </script>
 </body>
-</html> 
+</html>

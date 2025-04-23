@@ -258,7 +258,7 @@ def localplace(request):
     dis=tbl_district.objects.all()
     loc=tbl_localplace.objects.all()
     if request.method=="POST":
-        plc=tbl_place.objects.get(id=request.POST.get("sel_place"))
+        plc=tbl_place.objects.get(id=request.POST.get("place"))
         local=request.POST.get("local")
         tbl_localplace.objects.create(place=plc,local_place=local)
         msg="Data Inserted"

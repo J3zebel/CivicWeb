@@ -92,5 +92,42 @@
     alert("{{ msg|escapejs }}");
     window.location = "{% url 'Admin:localplace' %}";
 </script>
+<script>
+    $("#district").change(function () {
+        var did = $(this).val();
+        var ur = "{% url 'Guest:ajaxplace' %}"
+        $.ajax({
+            url: ur,
+            data: { did: did, },
+            success: function (data) {
+                $("#place").html(data);
+            },
+        });
+    });
+
+    $("#place").change(function () {
+        var pid = $(this).val();
+        var ur = "{% url 'Guest:ajaxlocal' %}"
+        $.ajax({
+            url: ur,
+            data: { pid: pid, },
+            success: function (data) {
+                $("#local").html(data);
+            },
+        });
+    });
+
+    $("#district").change(function () {
+        var mid = $(this).val();
+        var ur = "{% url 'Guest:ajaxmuncipality' %}"
+        $.ajax({
+            url: ur,
+            data: { mid: mid, },
+            success: function (data) {
+                $("#muncipality").html(data);
+            },
+        });
+    });
+</script>
 {% endif %}
 {% endblock %}

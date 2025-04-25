@@ -259,12 +259,13 @@ def localplace(request):
     loc=tbl_localplace.objects.all()
     if request.method=="POST":
         plc=tbl_place.objects.get(id=request.POST.get("place"))
-        local=request.POST.get("local")
+        local=request.POST.get("txt_place")
         tbl_localplace.objects.create(place=plc,local_place=local)
         msg="Data Inserted"
         return render(request,'Admin/Localplace.html',{'msg':msg})
     else:
         return render(request,'Admin/Localplace.html',{'local':loc,'district':dis})
+    
 
 def dellocal(request,id):
     tbl_localplace.objects.get(id=id).delete()

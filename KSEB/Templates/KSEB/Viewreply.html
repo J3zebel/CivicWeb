@@ -46,9 +46,21 @@
             padding: 5px 10px;
             border-radius: 3px;
             text-decoration: none;
+            margin-left: 5px; /* Add spacing between buttons */
         }
         .action-btn:hover {
             background-color: #0056b3;
+        }
+        .reject-btn {
+            background-color: #dc3545; /* Red for reject */
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+        .reject-btn:hover {
+            background-color: #c82333;
         }
         .status-approved { color: #28a745; } /* Green for Approved */
         .status-pending { color: #ffc107; } /* Yellow for Pending */
@@ -63,16 +75,16 @@
         {% for i in reply %}
         <div class="request-item">
             <div class="request-details">
-                <p><strong>request id:</strong> #{{ forloop.counter }}</strong></p>
+                <p><strong>Request ID:</strong> #{{ forloop.counter }}</p>
                 <p><strong>Username:</strong> {{ i.user.user_name }}</p>
                 <p><strong>Contact:</strong> {{ i.user.user_contact }}</p>
                 <p><strong>Photo:</strong> <a href="{{ i.request_photo }}">View File</a></p>
                 <p><strong>Content:</strong> {{ i.request_content }}</p>
-                
             </div>
             <div>
                 {% if i.request_status == 0 %}
                 <a href="{% url 'KSEB:requpdate' i.id 1 %}" class="action-btn">Accept</a>
+                <a href="{% url 'KSEB:requpdate' i.id 5 %}" class="reject-btn">Reject</a>
                 {% elif i.request_status == 1 %}
                 <a href="{% url 'KSEB:requpdate' i.id 2 %}" class="action-btn">Investigating</a>
                 {% elif i.request_status == 2 %}
